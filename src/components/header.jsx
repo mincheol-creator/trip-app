@@ -5,7 +5,7 @@ import Navigation from "../components/navigation";
 const Header = props => {
   return (
     <div className="header">
-      <div className="header-logo">VOYAGE</div>
+      <div className="header-logo">모두의 트립</div>
       <Navigation />
     </div>
   );

@@ -3,7 +3,7 @@ import React from "react";
 import "../scss/page.styles.scss";
 
 import Header from "../components/header";
-import Slider from "../components/slider";
+import Search from "../components/search";
 import CityPreview from "../components/city-preview";
 import TourPreview from "../components/tour-preview";
 import TicketPreview from "../components/ticket-preview";
@@ -13,7 +13,7 @@ const HomePage = () => {
   return (
     <div className="home-container">
       <Header />
-      <Slider />
+      <Search />
       <CityPreview />
       <TourPreview />
       <TicketPreview />
