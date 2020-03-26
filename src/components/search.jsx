@@ -1,6 +1,6 @@
 import React from "react";
 
-import "../scss/page.styles.scss";
+import "../scss/styles.scss";
 
 const Search = () => {
   return (

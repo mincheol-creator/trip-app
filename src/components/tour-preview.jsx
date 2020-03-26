@@ -2,7 +2,7 @@ import React from "react";
 
 import PreviewCard from "../components/preview-card";
 
-import "../scss/component.styles.scss";
+import "../scss/styles.scss";
 
 const TourPreview = () => {
   return (

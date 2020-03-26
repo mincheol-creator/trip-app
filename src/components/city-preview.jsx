@@ -1,9 +1,9 @@
 import React from "react";
 
-import "../scss/component.styles.scss";
+import "../scss/styles.scss";
 import CityButton from "./city-button";
 
-const cities = ["런던", "파리", "말라카", "서울", "인터라켄"];
+const cities = ["런던", "파리", "코타키나발루", "바르셀로나", "인터라켄"];
 
 const CityPreview = () => {
   return (
