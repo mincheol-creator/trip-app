@@ -1,5 +1,17 @@
 {
-  "id": "xxx",
+  "id": 1,
   "name": "루브르 집중 투어",
-  "description": "소장품의 수와 질 면에서 메트로폴리탄 미술관과 대영박물관과 함께 세계적으로 손꼽히는 박물관, 루브르! 모두의 트립에서 전문적인 가이드와 함께하세요!"
+  "description": "소장품의 수와 질 면에서 메트로폴리탄 미술관과 대영박물관과 함께 세계적으로 손꼽히는 박물관, 루브르! 모두의 트립에서 전문적인 가이드와 함께하세요!",
+  "start_date": "2020-01-03",
+  "end_date": "2020-01-03",
+  "available_start_date": "2020-01-01",
+  "available_end_date": "2020-04-30",
+  "adult_price": 35000,
+  "youth_price": 25000,
+  "location": "Rue de Rivoli, 75001 Paris, France",
+  "photo": "",
+  "category": "tour",
+  "city": "Paris",
+  "country": "France",
+  "createdAt": ""
 }
