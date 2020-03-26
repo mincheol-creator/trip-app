@@ -1,18 +1,23 @@
 import React from "react";
 
-import "../scss/homepage.styles.scss";
+import "../scss/page.styles.scss";
 
 import Header from "../components/header";
+import Slider from "../components/slider";
+import CityPreview from "../components/city-preview";
+import TourPreview from "../components/tour-preview";
+import TicketPreview from "../components/ticket-preview";
+import Footer from "../components/footer";
 
 const HomePage = () => {
   return (
-    <div className="homepage-container">
+    <div className="home-container">
       <Header />
-      {/* <Intro /> */}
-      {/* <Destination /> */}
-      {/* <TourPreview /> */}
-      {/* <TicketPreview /> */}
-      {/* <Footer /> */}
+      <Slider />
+      <CityPreview />
+      <TourPreview />
+      <TicketPreview />
+      <Footer />
     </div>
   );
 };

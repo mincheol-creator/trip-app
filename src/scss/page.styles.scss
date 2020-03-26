@@ -1,3 +1,8 @@
+.home-container {
+  display: grid;
+  grid-template-rows: auto;
+}
+
 .header {
   display: grid;
   grid-template-columns: 1fr 50rem;
@@ -21,4 +26,22 @@
       font-size: 1.7rem;
     }
   }
+}
+
+.slider {
+  height: 20rem;
+  background-color: lightblue;
+}
+
+.city-preview {
+  height: 20rem;
+  background-color: lightgreen;
+}
+.tour-preview {
+  height: 20rem;
+  background-color: lightcoral;
+}
+.ticket-preview {
+  height: 20rem;
+  background-color: lightgrey;
 }

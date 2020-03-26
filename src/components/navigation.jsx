@@ -4,8 +4,8 @@ const Navigation = () => {
   return (
     <nav className="navigation">
       <ul>
-        <li>가이드 투어</li>
-        <li>티켓 구매</li>
+        <li>투어 & 티켓</li>
+        <li>할인혜택</li>
         <li>로그인</li>
         <li>회원가입</li>
       </ul>

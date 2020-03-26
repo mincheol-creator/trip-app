@@ -5,7 +5,7 @@ import Navigation from "../components/navigation";
 const Header = props => {
   return (
     <div className="header">
-      <div className="header-logo">TRIP</div>
+      <div className="header-logo">VOYAGE</div>
       <Navigation />
     </div>
   );
