@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 const Header = props => {
   return (
@@ -8,8 +9,12 @@ const Header = props => {
         <ul>
           <li>투어 & 티켓</li>
           <li>할인혜택</li>
-          <li>로그인</li>
-          <li>회원가입</li>
+          <li>
+            <NavLink to="/user">로그인</NavLink>
+          </li>
+          <li>
+            <NavLink to="/user">회원가입</NavLink>
+          </li>
         </ul>
       </nav>
     </div>

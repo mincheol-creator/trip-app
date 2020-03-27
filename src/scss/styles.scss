@@ -7,6 +7,13 @@
   display: grid;
   grid-template-rows: auto;
 }
+.header-wrapper {
+  height: 40rem;
+  background-image: $bg-img;
+  background-repeat: cover;
+  background-size: 100%;
+  background-position: right 35% bottom 45%;
+}
 
 /*
 * COMPONENTS
@@ -14,11 +21,16 @@
 .header {
   display: grid;
   grid-template-columns: 1fr 50rem;
-  background-color: lightpink;
+  // max-width: 1060px;
+
+  color: $black;
+  font-weight: 400;
+  margin-top: 2rem;
 
   &-logo {
     font-size: 3rem;
     margin-left: 2rem;
+    font-family: $bold;
   }
 
   &-navigation {
@@ -37,15 +49,28 @@
 }
 
 .search {
+  display: grid;
+  grid-template-rows: 2fr 1fr 1fr;
   height: 20rem;
-  background-color: lightblue;
   text-align: center;
 
+  label {
+    font-size: 3rem;
+    margin-left: 2rem;
+    font-family: $bold;
+    // color: $beige;
+  }
+
   input {
-    height: 3rem;
-    width: 100rem;
+    height: 4rem;
+    width: 60rem;
     padding: 1rem;
     font-size: 1.5rem;
+    margin: auto;
+
+    &:focus::placeholder {
+      color: transparent;
+    }
   }
 }
 
@@ -96,4 +121,17 @@
   width: 10rem;
   height: 15rem;
   background-color: greenyellow;
+}
+
+/*
+* Signin / Signup
+*/
+
+.signin {
+  border: 1px solid #dee2e6;
+  border-radius: 2px;
+}
+#keep_session {
+  display: inline-block;
+  width: initial;
 }

@@ -1,9 +1,10 @@
-:root {
-  --main-color: #ffffff;
+@font-face {
+  font-family: "Maple-bold";
+  src: url("/font/Maplestory Bold.ttf") format("truetype");
 }
 
 html {
-  padding: 2rem 1rem;
+  /* padding: 1rem 1rem; */
   /* width: 100vw; */
   font-size: 62.5%;
 }
@@ -15,10 +16,24 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  max-width: 1060px;
+  /* max-width: 1060px; */
 }
 
 ul,
-li {
+li,
+a {
   all: unset;
+}
+
+label {
+  font-size: 1.2rem;
+}
+
+input {
+  display: block;
+  width: 30rem;
+  height: 2rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  font-size: 1.2rem;
 }

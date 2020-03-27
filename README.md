@@ -2,7 +2,7 @@
 
 ## Overview
 
-(가제) Our fake trip
+(가제) 모두의 여행 (ModooTrip)
 여행 가이드 투어 상품 및 관련 티켓 구매 웹사이트
 
 ## Features
