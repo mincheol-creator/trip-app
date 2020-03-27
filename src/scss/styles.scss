@@ -1,4 +1,5 @@
 @import "variables.scss";
+@import "App.scss";
 
 /*
 * PAGES
@@ -7,12 +8,19 @@
   display: grid;
   grid-template-rows: auto;
 }
-.header-wrapper {
-  height: 40rem;
-  background-image: $bg-img;
-  background-repeat: cover;
-  background-size: 100%;
-  background-position: right 35% bottom 45%;
+
+// .header-wrapper {
+//   height: 40rem;
+//   background-image: $bg-img;
+//   background-repeat: cover;
+//   background-size: 100%;
+//   background-position: right 35% bottom 45%;
+// }
+
+.user-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  // background-color: $yellow;
 }
 
 /*
@@ -25,12 +33,16 @@
 
   color: $black;
   font-weight: 400;
-  margin-top: 2rem;
+  margin: 2rem auto;
 
   &-logo {
     font-size: 3rem;
-    margin-left: 2rem;
+    margin-left: 3rem;
     font-family: $bold;
+
+    a {
+      cursor: pointer;
+    }
   }
 
   &-navigation {
@@ -127,11 +139,33 @@
 * Signin / Signup
 */
 
-.signin {
-  border: 1px solid #dee2e6;
-  border-radius: 2px;
+.signin,
+.signup {
+  // border-right: 1px solid #dee2e6;
+  // border-radius: 2px;
+  margin: 3rem auto;
 }
-#keep_session {
+input[type="checkbox"] {
   display: inline-block;
   width: initial;
+}
+
+.product {
+  display: grid;
+  grid-template-columns: 5fr 1fr;
+
+  &-main {
+    background-color: $yellow;
+
+    height: 20rem;
+  }
+
+  &-side {
+    background-color: $coral;
+    height: 20rem;
+
+    &__price {
+      font-size: 1.5rem;
+    }
+  }
 }

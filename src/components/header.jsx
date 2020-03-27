@@ -4,11 +4,13 @@ import { NavLink } from "react-router-dom";
 const Header = props => {
   return (
     <div className="header">
-      <div className="header-logo">모두의 트립</div>
+      <div className="header-logo">
+        <NavLink to="/">모두의 여행</NavLink>
+      </div>
       <nav className="header-navigation">
         <ul>
           <li>투어 & 티켓</li>
-          <li>할인혜택</li>
+          <li>장바구니</li>
           <li>
             <NavLink to="/user">로그인</NavLink>
           </li>

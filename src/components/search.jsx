@@ -5,7 +5,7 @@ import "../scss/styles.scss";
 const Search = () => {
   return (
     <div className="search">
-      <label htmlFor="search-input">어디로 떠나세요?</label>
+      <label>어디로 떠나세요?</label>
       <input
         type="text"
         id="search-input"
