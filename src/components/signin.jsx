@@ -1,17 +1,19 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Redirect } from "react-router-dom";
+
+import store from "../redux/store";
 
 import API from "../API";
 
-import ACTION from "../redux/customer/customer.action";
+import addCustomer from "../redux/customer/customer.action";
 
 import "../scss/styles.scss";
 
 const SignIn = props => {
   React.useEffect(() => {
-    if (props.isLoggedIn) {
-      return <Redirect exact to="/" />;
+    if (props.customer.isLoggedIn) {
+      console.log("hey");
+      window.location.href = "/";
     }
   });
 
@@ -24,7 +26,12 @@ const SignIn = props => {
     let password = passwordInput.current.value;
     API.getCustomer(email, password).then(response => {
       if (response.data.message) {
-        return ACTION.addCustomer(true);
+        alert("로그인에 성공했습니다.");
+        return store.dispatch(
+          addCustomer({
+            isLoggedIn: true
+          })
+        );
       } else {
         alert("로그인에 실패했습니다.");
       }
@@ -41,6 +48,7 @@ const SignIn = props => {
           name="email"
           id="signin-email"
           placeholder="ID@example.com"
+          required
           ref={emailInput}
         />
         <label htmlFor="signin-password">비밀번호*</label>
@@ -49,6 +57,7 @@ const SignIn = props => {
           name="password"
           id="signin-password"
           placeholder="비밀번호를 입력해주세요."
+          required
           ref={passwordInput}
         />
         <label htmlFor="keep_session">

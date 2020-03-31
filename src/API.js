@@ -22,4 +22,12 @@ const getCustomer = (email, password) => {
   });
 };
 
+/*
+ * CITY
+ */
+
+// const getCityInfo = () => {
+//     return axios.post(url, {cityname})
+// }
+
 export default { addCustomer, getCustomer };

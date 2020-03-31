@@ -8,4 +8,4 @@ const addCustomer = item => ({
   payload: item
 });
 
-export default { addCustomer };
+export default addCustomer;

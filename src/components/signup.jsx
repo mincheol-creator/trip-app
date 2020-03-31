@@ -48,6 +48,7 @@ const SignUp = props => {
           name="email"
           id="signup-email"
           placeholder="ID@example.com"
+          required
           ref={emailInput}
         />
 
@@ -57,6 +58,7 @@ const SignUp = props => {
           name="password"
           id="signup-password"
           placeholder="영문, 숫자, 특수문자 조합 8~20자"
+          required
           ref={passwordInput}
         />
 
@@ -66,6 +68,7 @@ const SignUp = props => {
           name="password-confirm"
           id="signup-password-confirm"
           placeholder="비밀번호를 한번 더 입력해주세요."
+          required
           ref={passwordConfirmInput}
         />
 

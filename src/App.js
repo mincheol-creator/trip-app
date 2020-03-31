@@ -21,7 +21,7 @@ function App() {
           <UserPage />
         </Route>
 
-        <Route path="/product">
+        <Route path="/product/:id">
           <ProductPage />
         </Route>
 

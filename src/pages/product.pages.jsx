@@ -3,7 +3,7 @@ import React from "react";
 import "../scss/styles.scss";
 
 import Header from "../components/header";
-import Slick from "../components/slick";
+// import Slick from "../components/slick";
 
 const ProductPage = () => {
   const handleClick = () => {
