@@ -3,28 +3,15 @@ import CustomerActionTypes from "./customer.types";
 /*
  * 초기 STATE 값
  */
-const INITIAL_STATE = { customer: "" };
+const INITIAL_STATE = { isLoggedIn: false };
 
 /*
- * REDUCER에서 특정 ACTION TYPE일 때 실행할 함수
+ * REDUCER에서 특정 ACTION TYPE일 때 실행할 함수 (새 State를 return 함)
  */
-// const addItemToCart = (prevItems, newItem) => {
-//   //   prevItems.push(newItem); // 여기요 선생님!!! 여기가 문제였어!!!ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ
-//   console.log(prevItems);
-//   if (!!prevItems.find(({ name }) => name === newItem)) {
-//     return {
-//       cart: prevItems.map(item =>
-//         item.name === newItem ? { ...item, quantity: item.quantity + 1 } : item
-//       )
-//     };
-//   }
-//   return { cart: [...prevItems, { name: newItem, quantity: 1 }] }; // 이렇게 새 array를 생성했어야 한다
-// };
 
-const addCustomer = (prevState, newState) => {
-  console.log(newState);
-  return newState;
-};
+// const addCustomer = (prevState, newState) => {
+//   return newState;
+// };
 
 /*
  * REDUCER (switch로 ACTION TYPE별로 새로운 STATE를 리턴할 함수 분리)
@@ -32,7 +19,7 @@ const addCustomer = (prevState, newState) => {
 const customerReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case CustomerActionTypes.ADD_CUSTOMER:
-      return addCustomer(state.customer, action.payload);
+      return { isLoggedIn: action.payload };
 
     default:
       return state;

@@ -1,29 +1,40 @@
 import React from "react";
-import store from "../redux/store";
 import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
+
+import API from "../API";
+
+import ACTION from "../redux/customer/customer.action";
 
 import "../scss/styles.scss";
-import addCustomer from "../redux/customer/customer.action";
 
 const SignIn = props => {
+  React.useEffect(() => {
+    if (props.isLoggedIn) {
+      return <Redirect exact to="/" />;
+    }
+  });
+
   let emailInput = React.createRef();
   let passwordInput = React.createRef();
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    let email = emailInput.current.value;
+    let password = passwordInput.current.value;
+    API.getCustomer(email, password).then(response => {
+      if (response.data.message) {
+        return ACTION.addCustomer(true);
+      } else {
+        alert("로그인에 실패했습니다.");
+      }
+    });
+  };
 
   return (
     <div className="signin">
       <h1>로그인</h1>
-      <form
-        onSubmit={e => {
-          e.preventDefault();
-          store.dispatch(
-            addCustomer({
-              email: emailInput.current.value,
-              password: passwordInput.current.value
-            })
-          );
-          console.log(props.customer); //?
-        }}
-      >
+      <form onSubmit={e => handleSubmit(e)}>
         <label htmlFor="signin-email">이메일*</label>
         <input
           type="email"
