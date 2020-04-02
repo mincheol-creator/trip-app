@@ -1,6 +1,11 @@
 @import "variables.scss";
 @import "App.scss";
 
+@mixin centered {
+  width: 80%;
+  margin: 3rem auto;
+}
+
 /*
 * PAGES
 */
@@ -44,7 +49,7 @@
 
   &-header {
     height: 35rem;
-    background-image: url("/img/london-header.jpg");
+    // background-image: url("/img/london-header.jpg");
     background-size: 100%;
     background-position: right 35% bottom 50%;
     display: grid;
@@ -207,6 +212,7 @@
 .city-preview {
   height: 20rem;
   background-color: lightgreen;
+  @include centered;
 
   &__title {
     font-size: 1.7rem;
@@ -226,10 +232,12 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
+  @include centered;
 }
 .ticket-preview {
   height: 20rem;
   background-color: lightgrey;
+  @include centered;
 }
 
 .city-button {

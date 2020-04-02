@@ -4,6 +4,7 @@ import "../scss/styles.scss";
 
 const CityButton = props => {
   const handleClick = () => {
+    console.log(window.location.href);
     window.location.href = `/city/${props.data.name_eng}`;
   };
 

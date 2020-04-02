@@ -40,14 +40,20 @@ class CityPage extends React.Component {
   }
 
   componentDidMount() {
+    var pathArray = window.location.pathname.split("/");
+    console.log(pathArray[2]);
     // city tour 랑 ticket 정보 불러오기
+    // API.getCityData(cityName) 으로, 컴포넌트 마운트 되면서 넘어온 url string으로 도시 구분해서 데이터 받아서 랜더링
   }
 
   render() {
     const { name_kor, name_eng, country, desc } = this.state.cityData;
     return (
       <section className="city">
-        <div className="city-header">
+        <div
+          className="city-header"
+          style={{ backgroundImage: `url("/img/london-header.jpg")` }}
+        >
           <div className="city-header__name">
             <div className="city-header__name-main">{name_kor}</div>
             <div className="city-header__name-sub">
