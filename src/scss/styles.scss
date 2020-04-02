@@ -24,6 +24,32 @@
 }
 
 /*
+* CITY PAGE
+*/
+.city {
+  &-header {
+    height: 35rem;
+    background-image: url("/img/london-header.jpg");
+    background-size: 100%;
+    background-position: right 35% bottom 50%;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    &__name {
+      &-main {
+        font-size: 4rem;
+      }
+
+      &-sub {
+        font-size: 2rem;
+      }
+    }
+  }
+}
+
+/*
 * COMPONENTS
 */
 .header {
@@ -127,9 +153,10 @@
 }
 
 /*
-* Preview Card
+* Product Card
 */
-.preview-card {
+.product-card {
+  display: inline-block;
   width: 10rem;
   height: 15rem;
   background-color: greenyellow;
