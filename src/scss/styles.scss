@@ -9,13 +9,13 @@
   grid-template-rows: auto;
 }
 
-// .header-wrapper {
-//   height: 40rem;
-//   background-image: $bg-img;
-//   background-repeat: cover;
-//   background-size: 100%;
-//   background-position: right 35% bottom 45%;
-// }
+.header-wrapper {
+  height: 40rem;
+  background-image: $bg-img;
+  background-repeat: cover;
+  background-size: 100%;
+  background-position: right 35% bottom 45%;
+}
 
 .user-container {
   display: grid;
@@ -207,7 +207,19 @@
 .city-preview {
   height: 20rem;
   background-color: lightgreen;
+
+  &__title {
+    font-size: 1.7rem;
+    font-weight: 600;
+  }
+
+  &__list {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
 }
+
 .tour-preview {
   height: 20rem;
   background-color: lightcoral;
@@ -218,12 +230,6 @@
 .ticket-preview {
   height: 20rem;
   background-color: lightgrey;
-}
-
-.city-preview {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
 }
 
 .city-button {

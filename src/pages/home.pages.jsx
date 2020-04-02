@@ -2,6 +2,7 @@ import React from "react";
 
 import "../scss/styles.scss";
 
+import Header from "../components/header";
 import Search from "../components/search";
 import CityPreview from "../components/city-preview";
 import TourPreview from "../components/tour-preview";
@@ -32,7 +33,10 @@ class HomePage extends React.Component {
     const { city, tour, ticket } = this.state;
     return (
       <div className="home-container">
-        <Search />
+        <div className="header-wrapper">
+          <Header />
+          <Search />
+        </div>
         <CityPreview city={city} />
         <TourPreview tour={tour} />
         <TicketPreview ticket={ticket} />

@@ -11,21 +11,23 @@ import CityPage from "./pages/city.pages";
 function App() {
   return (
     <div className="App">
-      <Header />
       <Switch>
         <Route exact path="/">
           <HomePage />
         </Route>
 
         <Route path="/user">
+          <Header />
           <UserPage />
         </Route>
 
         <Route path="/product/:id">
+          <Header />
           <ProductPage />
         </Route>
 
         <Route path="/city/:name">
+          <Header />
           <CityPage />
         </Route>
       </Switch>
