@@ -14,7 +14,7 @@ class CityPage extends React.Component {
         name_eng: "London",
         country: "United Kingdom",
         desc:
-          "There's no place like London! 🇬🇧 Fuga quasi enim molestiae ipsam et est ea praesentium. Ex eos corrupti dolores ut exercitationem quasi qui. Nisi quod eos facilis illum. Id quasi non quod et eius accusantium. Omnis mollitia nihil quia aut."
+          "빅벤, 런던 아이, 빨간 공중전화 부스 등 상징적인 랜드마크로 유명한 런던은 현대적인 면모와 오랜 역사를 모두 갖춘 도시입니다. 흐린 날씨에도 불구하고 런던은 늘 유행을 선도하는 도시이자 맛있는 음식의 천국, 예술의 중심지로 사랑받아 왔습니다. 버킹엄 궁전을 방문해서 케임브리지 공작 윌리엄 왕자와 공작부인 캐서린 왕세자빈이 입 맞춘 유명한 발코니도 보고 넓게 펼쳐진 공원을 산책해보세요. 해러즈나 프라이마크와 같은 유명 런던 백화점과 쇼핑몰에서 기분 좋게 쇼핑하는 것도 좋아요. 유명 인사들이 결혼식을 올린 웨스트민스터 사원을 방문하는 것도 잊지 마세요!"
       },
       tourData: [
         {
@@ -46,35 +46,51 @@ class CityPage extends React.Component {
   render() {
     const { name_kor, name_eng, country, desc } = this.state.cityData;
     return (
-      <div className="city">
-        <section className="city-header">
+      <section className="city">
+        <div className="city-header">
           <div className="city-header__name">
             <div className="city-header__name-main">{name_kor}</div>
             <div className="city-header__name-sub">
               {name_eng}, {country}
             </div>
           </div>
-        </section>
-        <div className="city-desc">{desc}</div>
-        <section className="city-tour">
-          <div className="city-tour__title">🚩{name_kor} 가이드 투어</div>
-          <div className="city-tour__list">
+        </div>
+
+        <div className="city-desc">
+          <div className="city-desc__title city__title">
+            🛫 모두의 여행과 함께 가는 {name_kor}!
+          </div>
+          <div className="city-desc__content">
+            <div className="city-desc__description"> {desc}</div>
+            <div className="city-desc__map">
+              <img
+                src="https://maps.googleapis.com/maps/api/staticmap?center=London&zoom=14&size=250x250&key=APIKEY"
+                alt="City google map"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div className="city-tour">
+          <div className="city__title">🚩 {name_kor} 가이드 투어</div>
+          <div className="city__list">
             <ProductCard tourData={this.state.tourData[0]} />
+            <ProductCard tourData={this.state.tourData[0]} />
+            <ProductCard tourData={this.state.tourData[0]} />
+            <ProductCard tourData={this.state.tourData[0]} />
+          </div>
+        </div>
+
+        <div className="city-ticket">
+          <div className="city__title">🎫 {name_kor} 티켓</div>
+          <div className="city__list">
             {/* <ProductCard />
+            <ProductCard />
             <ProductCard />
             <ProductCard /> */}
           </div>
-        </section>
-        <section className="city-ticket">
-          <div className="city-ticket__title">🎫{name_kor} 티켓</div>
-          <div className="city-ticket__list">
-            {/* <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard /> */}
-          </div>
-        </section>
-      </div>
+        </div>
+      </section>
     );
   }
 }
