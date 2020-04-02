@@ -1,7 +1,7 @@
 import axios from "axios";
 
 axios.defaults.withCredentials = true;
-const url = "172.30.1.9:8080"; // Server URL
+const url = "192.168.0.15:8080"; // Server URL
 
 /*
  * USER
@@ -19,6 +19,10 @@ const getCustomer = (email, password) => {
     email,
     password
   });
+};
+
+const getPreview = () => {
+  return axios.post(`http://${url}/product/getProductPreview`, {});
 };
 
 /*
