@@ -4,12 +4,12 @@ import "../scss/styles.scss";
 
 const CityButton = props => {
   const handleClick = () => {
-    alert("이 기능은 추후 업데이트 될 예정입니다");
+    window.location.href = `/city/${props.data.name_eng}`;
   };
 
   return (
     <div className="city-button" onClick={handleClick}>
-      <span className="city-button__name">{props.name}</span>
+      <span className="city-button__name">{props.data.name_kor}</span>
     </div>
   );
 };
