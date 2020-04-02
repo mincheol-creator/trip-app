@@ -2,7 +2,6 @@ import React from "react";
 
 import "../scss/styles.scss";
 
-import Header from "../components/header";
 // import Slick from "../components/slick";
 
 const ProductPage = () => {
@@ -12,7 +11,6 @@ const ProductPage = () => {
 
   return (
     <>
-      <Header />
       <div className="product">
         <section className="product-main">여기에 상품 이름, 설명 등</section>
         <section className="product-side">

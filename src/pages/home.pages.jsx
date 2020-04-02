@@ -7,17 +7,33 @@ import CityPreview from "../components/city-preview";
 import TourPreview from "../components/tour-preview";
 import TicketPreview from "../components/ticket-preview";
 import Footer from "../components/footer";
+import API from "../API";
 
-const HomePage = () => {
-  return (
-    <div className="home-container">
-      <Search />
-      <CityPreview />
-      <TourPreview />
-      <TicketPreview />
-      <Footer />
-    </div>
-  );
-};
+class HomePage extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      city: [],
+      tour: [],
+      ticket: []
+    };
+  }
+  componentDidMount() {
+    // API.getPreview().then(()=>this.setState());
+  }
+
+  render() {
+    const { city, tour, ticket } = this.state;
+    return (
+      <div className="home-container">
+        <Search />
+        <CityPreview city={city} />
+        <TourPreview tour={tour} />
+        <TicketPreview ticket={ticket} />
+        <Footer />
+      </div>
+    );
+  }
+}
 
 export default HomePage;
