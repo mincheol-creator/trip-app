@@ -2,7 +2,7 @@ import React from "react";
 
 const ProductCard = ({ tourData }) => {
   const handleClick = () => {
-    alert("이동해야됨 ㅠ");
+    window.location.href = `/product/${tourData.id}`;
   };
   // console.log(tourData);
   return (

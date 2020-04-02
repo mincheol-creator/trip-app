@@ -5,49 +5,49 @@ import "../scss/styles.scss";
 import API from "../API";
 
 class ProductPage extends React.Component {
-  componentDidMount() {
-    const id = "1";
-    API.selectProduct(id).then(response => {
-      if (response.data.message) {
-        alert("조회 되었습니다!");
-        this.setState({
-          productData: response.data.productData
-        });
-      } else {
-        alert("조회 실패했습니다");
+  constructor() {
+    super();
+    this.state = {
+      // productData: ""
+      // dummy data
+      productData: {
+        id: 3,
+        name: "런던 시내 워킹 투어",
+        description:
+          "단순한 흥미위주의 관광이 아닌, 역사적으로 좀 더 깊고 실질적으로 영국을 알아가는 현지/문화/체험투어",
+        start_date: "2020-02-07",
+        end_date: "2020-02-07",
+        available_start_date: "2020-01-01",
+        available_end_date: "2020-03-30",
+        adult_price: 35000,
+        youth_price: 30000,
+        location: "England SW1A 0AA London",
+        photo: "https://picsum.photos/200/300",
+        category: "tour",
+        city: "London",
+        country: "England",
+        createdAt: ""
       }
-    });
+    };
   }
+
+  // componentDidMount() {
+  //   const id = "1";
+  //   API.selectProduct(id).then(response => {
+  //     if (response.data.message) {
+  //       alert("조회 되었습니다!");
+  //       this.setState({
+  //         productData: response.data.productData
+  //       });
+  //     } else {
+  //       alert("조회 실패했습니다");
+  //     }
+  //   });
+  // }
 
   handleClick = () => {
     return alert();
   };
-
-  constructor() {
-    super();
-    this.state = {
-      productData: ""
-      // dummy data
-      /* productData: {
-        id: 1,
-        name: "루브르 집중 투어",
-        description:
-          "소장품의 수와 질 면에서 메트로폴리탄 미술관과 대영박물관과 함께 세계적으로 손꼽히는 박물관, 루브르! 모두의 트립에서 전문적인 가이드와 함께하세요!",
-        start_date: "2020-01-03",
-        end_date: "2020-01-03",
-        available_start_date: "2020-01-01",
-        available_end_date: "2020-04-30",
-        adult_price: 35000,
-        youth_price: 25000,
-        location: "Rue de Rivoli, 75001 Paris, France",
-        photo: "",
-        category: "tour",
-        city: "Paris",
-        country: "France",
-        createdAt: ""
-      } */
-    };
-  }
 
   render() {
     /*     const {
