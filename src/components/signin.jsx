@@ -12,7 +12,6 @@ import "../scss/styles.scss";
 const SignIn = props => {
   React.useEffect(() => {
     if (props.customer.isLoggedIn) {
-      console.log("hey");
       window.location.href = "/";
     }
   });

@@ -1,18 +1,18 @@
 import React from "react";
 
-import PreviewCard from "../components/preview-card";
+import ProductCard from "../components/product-card";
 
 import "../scss/styles.scss";
 
 const TourPreview = () => {
   return (
     <div className="tour-preview">
-      <PreviewCard />
-      <PreviewCard />
-      <PreviewCard />
-      <PreviewCard />
-      <PreviewCard />
-      <PreviewCard />
+      <ProductCard />
+      <ProductCard />
+      <ProductCard />
+      <ProductCard />
+      <ProductCard />
+      <ProductCard />
     </div>
   );
 };
