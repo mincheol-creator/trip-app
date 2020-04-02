@@ -5,16 +5,7 @@ import ProductCard from "../components/product-card";
 import "../scss/styles.scss";
 
 const TourPreview = () => {
-  return (
-    <div className="tour-preview">
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
-    </div>
-  );
+  return <div className="tour-preview"></div>;
 };
 
 export default TourPreview;
