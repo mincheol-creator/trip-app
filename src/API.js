@@ -21,6 +21,11 @@ const getCustomer = (email, password) => {
   });
 };
 
+const selectProduct = id => {
+  return axios.post(`http://${url}/product/getProduct`, {
+    id
+  });
+};
 /*
  * CITY
  */
