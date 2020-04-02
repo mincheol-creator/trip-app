@@ -9,8 +9,7 @@ const Header = props => {
       </div>
       <nav className="header-navigation">
         <ul>
-          <li>투어 & 티켓</li>
-          <li>장바구니</li>
+          <li>찜 목록</li>
           <li>
             <NavLink to="/user">로그인</NavLink>
           </li>

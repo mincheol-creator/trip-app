@@ -19,13 +19,13 @@ class HomePage extends React.Component {
     };
   }
   componentDidMount() {
-    API.getPreview().then(response =>
-      this.setState({
-        city: response.data.city,
-        tour: response.data.tour,
-        ticket: response.data.ticket
-      })
-    );
+    // API.getPreview().then(response =>
+    //   this.setState({
+    //     city: response.data.city,
+    //     tour: response.data.tour,
+    //     ticket: response.data.ticket
+    //   })
+    // );
   }
 
   render() {
