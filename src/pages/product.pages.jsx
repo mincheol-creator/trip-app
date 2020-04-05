@@ -1,6 +1,7 @@
 import React from "react";
-
 import "../scss/styles.scss";
+import DayPicker from "react-day-picker";
+import "react-day-picker/lib/style.css";
 
 import API from "../API";
 
@@ -8,8 +9,6 @@ class ProductPage extends React.Component {
   constructor() {
     super();
     this.state = {
-      // productData: ""
-      // dummy data
       productData: {
         id: 3,
         name: "런던 시내 워킹 투어",
@@ -22,13 +21,17 @@ class ProductPage extends React.Component {
         adult_price: 35000,
         youth_price: 30000,
         location: "England SW1A 0AA London",
-        photo: "https://picsum.photos/200/300",
+        photo: "/img/london-header.jpg",
         category: "tour",
         city: "London",
         country: "England",
         createdAt: ""
       }
     };
+  }
+
+  currencyFormat(num) {
+    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
   }
 
   // componentDidMount() {
@@ -45,12 +48,8 @@ class ProductPage extends React.Component {
   //   });
   // }
 
-  handleClick = () => {
-    return alert();
-  };
-
   render() {
-    /*     const {
+    const {
       id,
       name,
       description,
@@ -64,39 +63,55 @@ class ProductPage extends React.Component {
       photo,
       category,
       city,
-      country,
-      createdAt
-    } = this.state.productData; */
+      country
+    } = this.state.productData;
     return (
       <div className="product">
         <section className="product-main">
-          상품명 : {this.state.productData.name}
-          <br /> 설명 : {this.state.productData.description}
-          <br /> 시작 날짜 : {this.state.productData.start_date}
-          <br /> 종료 날짜 : {this.state.productData.end_date}
-          <br />
-          이용 가능 시작 날짜 : {this.state.productData.available_start_date}
-          <br /> 이용 가능 종료 날짜 :{" "}
-          {this.state.productData.available_end_date}
-          <br /> 위치 : {this.state.productData.location}
-          <br /> 사진 : {this.state.productData.photo}
-          <br />
-          종류 : {this.state.productData.category}
-          <br /> 도시 : {this.state.productData.city}
-          <br /> 나라 : {this.state.productData.country}
-          <br />
-        </section>
-        <section className="product-side">
-          <div className="product-side__price">
-            어른 가격 : {this.state.productData.adult_price}
-            <br /> 어린이 가격 : {this.state.productData.youth_price}
+          <header className="product-main__title">🇬🇧 {name}</header>
+
+          <div className="product-main__picture">
+            <img src={photo} alt={name} />
           </div>
-          <button onClick={this.handleClick}>구매하기</button>
-          <button>🤍 찜 목록에 넣기</button>
+
+          <div className="product-main__options">
+            <div className="product-main__options-header">
+              날짜와 옵션을 선택하세요
+            </div>
+            <DayPicker />
+          </div>
+
+          <div className="product-main__desc">
+            <div className="product-main__desc-header">투어 소개</div>
+            <div> {description}</div>
+          </div>
+
+          <div className="product-main__meeting-location">
+            <div className="product-main__meeting-location-header">
+              만나는 장소
+            </div>
+            <div>{location}</div>
+          </div>
+
+          <div className="product-main__meeting-time">
+            <div className="product-main__meeting-time-header">만나는 시간</div>
+          </div>
         </section>
 
-        {/* <Slick /> */}
-        {/*  */}
+        <aside className="product-side">
+          <div className="product-side__price">
+            {this.currencyFormat(adult_price)}원
+          </div>
+          <div className="product-side__info">
+            <p>예약 가능한 가장 빠른 날짜: 2020년 4월 9일</p>
+            <p>24시간 이내 확정</p>
+          </div>
+          <div className="product-side__buttons">
+            <button>구매하기</button>
+            <button>❤️ 찜 목록에 넣기</button>
+            <div className="likes-content">50명이 찜 목록에 담았습니다</div>
+          </div>
+        </aside>
       </div>
     );
   }

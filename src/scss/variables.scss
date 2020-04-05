@@ -11,3 +11,34 @@ $bg-img: url("/img/bg.jpg");
 * FONT
 */
 $bold: "Maple-bold", sans-serif;
+
+/*
+* MIXINS 
+*/
+
+@mixin centered {
+  width: 80%;
+  margin: 3rem auto;
+}
+
+@mixin sm-title {
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+@mixin md-title {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+@mixin lg-title {
+  font-size: 4rem;
+  font-weight: 600;
+}
+
+@mixin product-separated-area {
+  border-top: 1px solid $beige;
+  //   border-bottom: 1px solid $beige;
+  padding: 2rem;
+  margin: 1rem;
+}
