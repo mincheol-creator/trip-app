@@ -16,7 +16,9 @@ const Header = props => {
           </li>
           {props.isLoggedIn ? (
             <>
-              <li>마이페이지</li>
+              <li>
+                <NavLink to="/user/dashboard">마이페이지</NavLink>
+              </li>
               <li>로그아웃</li>
             </>
           ) : (
@@ -38,5 +40,7 @@ const Header = props => {
 const mapStateToProps = state => {
   return state;
 };
+
+// mapStateToDispatch 로 로그아웃 기능 구현
 
 export default connect(mapStateToProps, null)(Header);

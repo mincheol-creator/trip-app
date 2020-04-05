@@ -29,6 +29,12 @@ function App() {
           <Footer />
         </Route>
 
+        <Route exact path="/user/dashboard">
+          <Header />
+          <UserPage pathname="dashboard" />
+          <Footer />
+        </Route>
+
         <Route path="/product/:id">
           <Header />
           <ProductPage />

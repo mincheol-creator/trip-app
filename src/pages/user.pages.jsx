@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import SignIn from "../components/signin";
 import SignUp from "../components/signup";
 import LikedProducts from "../components/likedProducts";
+import DashBoard from "../components/dashboard";
 
 class UserPage extends React.Component {
   constructor() {
@@ -22,19 +23,33 @@ class UserPage extends React.Component {
       this.setState({ pathname: this.props.pathname });
   }
 
-  render() {
-    return (
-      <div className="user-container">
-        {this.state.pathname === "likes" ? (
-          <LikedProducts />
-        ) : (
+  conditionalRender() {
+    switch (this.state.pathname) {
+      case "likes":
+        return <LikedProducts />;
+      case "signup":
+        return (
           <>
             <SignIn />
             <SignUp />
           </>
-        )}
-      </div>
-    );
+        );
+      case "signin":
+        return (
+          <>
+            <SignIn />
+            <SignUp />
+          </>
+        );
+      case "dashboard":
+        return <DashBoard />;
+      default:
+        return null;
+    }
+  }
+
+  render() {
+    return <div className="user-container">{this.conditionalRender()}</div>;
   }
 }
 
