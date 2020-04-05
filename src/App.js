@@ -7,6 +7,7 @@ import HomePage from "./pages/home.pages";
 import UserPage from "./pages/user.pages";
 import ProductPage from "./pages/product.pages";
 import CityPage from "./pages/city.pages";
+import Footer from "./components/footer";
 
 function App() {
   return (
@@ -19,21 +20,25 @@ function App() {
         <Route exact path="/user/signup">
           <Header />
           <UserPage pathname="signup" />
+          <Footer />
         </Route>
 
         <Route exact path="/user/likes">
           <Header />
           <UserPage pathname="likes" />
+          <Footer />
         </Route>
 
         <Route path="/product/:id">
           <Header />
           <ProductPage />
+          <Footer />
         </Route>
 
         <Route path="/city/:name">
           <Header />
           <CityPage />
+          <Footer />
         </Route>
       </Switch>
     </div>

@@ -26,15 +26,16 @@
   justify-content: space-between;
 
   color: $black;
-  text-shadow: 0 5px 5px rgba(129, 138, 148, 0.32);
+  // text-shadow: 0 5px 5px rgba(129, 138, 148, 0.32);
   font-weight: 400;
-  margin: 3rem auto;
+  margin: 2rem auto 3rem auto;
   width: 100%;
 
   &-logo {
     font-size: 3rem;
     margin-left: 3rem;
-    font-family: $bold;
+    font-weight: 800;
+    // font-family: $bold;
 
     a {
       cursor: pointer;
@@ -43,6 +44,8 @@
 
   &-navigation {
     font-weight: 600;
+    margin-right: 2rem;
+
     ul {
       display: flex;
       justify-content: space-around;
@@ -53,6 +56,12 @@
       li {
         cursor: pointer;
         font-size: 1.7rem;
+        padding: 1rem;
+
+        &:hover {
+          border-radius: 10px;
+          background-color: $beige;
+        }
       }
     }
   }
@@ -106,9 +115,10 @@
 
     &-main {
       @include md-title;
+      margin-bottom: 4px;
     }
     &-sub {
-      font-size: 1.2rem;
+      font-size: 1.3rem;
     }
   }
 
@@ -128,9 +138,10 @@
 
     &-main {
       @include md-title;
+      margin-bottom: 4px;
     }
     &-sub {
-      font-size: 1.2rem;
+      font-size: 1.3rem;
     }
   }
 
@@ -150,9 +161,10 @@
 
     &-main {
       @include md-title;
+      margin-bottom: 4px;
     }
     &-sub {
-      font-size: 1.2rem;
+      font-size: 1.3rem;
     }
   }
 
@@ -421,18 +433,46 @@
 .user-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  // background-color: $yellow;
+  height: 60vh;
+  @include centered;
 }
 
 .signin,
 .signup {
-  // border-right: 1px solid #dee2e6;
-  // border-radius: 2px;
   margin: 3rem auto;
+  padding: 3rem;
+  border: 1px solid $beige;
+
+  h1 {
+    @include md-title;
+  }
+
+  label {
+    margin-top: 1rem;
+    font-size: 1.3rem;
+  }
+
+  form {
+    margin-top: 3rem;
+  }
+
+  button {
+    @include main-button;
+    width: 30rem;
+    height: 2.5rem;
+    padding: 0.5rem;
+    margin: 1rem;
+    border: 2px solid transparent;
+  }
+
+  input[type="checkbox"] {
+    display: inline-block;
+    width: initial;
+  }
 }
-input[type="checkbox"] {
-  display: inline-block;
-  width: initial;
+
+.liked-products {
+  @include centered;
 }
 
 /*
@@ -442,7 +482,7 @@ input[type="checkbox"] {
 .footer {
   @include centered;
   border-top: 1px solid $beige;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   padding: 2rem 3rem;
 
   &-top {

@@ -12,7 +12,7 @@ const Header = props => {
           <li>
             <NavLink to="/user/likes">찜 목록</NavLink>
           </li>
-          <li>
+          <li className="header-navigation__login">
             <NavLink to="/user/signup">로그인</NavLink>
           </li>
           <li>
