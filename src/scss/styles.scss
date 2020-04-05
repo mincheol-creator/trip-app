@@ -178,19 +178,23 @@
 
 .city-button {
   cursor: pointer;
-  width: 13rem;
-  height: 13rem;
-  background-color: $blue;
+  width: 17rem;
+  height: 17rem;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  //   background-image: url("https://unsplash.it/200/200");
-  font-size: 2rem;
+
+  background-size: cover;
 
   &:hover {
-    background-color: yellow;
     transform: translateY(-1rem);
+    box-shadow: 0 5px 5px rgba(129, 138, 148, 0.32);
+  }
+
+  span {
+    @include md-title;
+    color: $beige;
   }
 }
 
@@ -378,12 +382,11 @@
     position: relative;
 
     &__photo {
-      height: 100%;
-      // background-color: lightpink;
       img {
         max-height: 100%;
         max-width: 100%;
         object-fit: cover;
+        overflow: hidden;
       }
     }
 
@@ -431,9 +434,9 @@
 */
 
 .user-container {
+  padding-bottom: 10rem;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  height: 60vh;
   @include centered;
 }
 

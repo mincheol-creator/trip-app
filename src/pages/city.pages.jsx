@@ -30,7 +30,7 @@ class CityPage extends React.Component {
           adult_price: 35000,
           youth_price: 30000,
           location: "England SW1A 0AA London",
-          photo: "/img/london-header.jpg",
+          photo: "/img/london-01.jpg",
           category: "tour",
           city: "London",
           country: "England",

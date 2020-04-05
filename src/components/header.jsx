@@ -1,4 +1,6 @@
 import React from "react";
+import { connect } from "react-redux";
+
 import { NavLink } from "react-router-dom";
 
 const Header = props => {
@@ -12,16 +14,29 @@ const Header = props => {
           <li>
             <NavLink to="/user/likes">찜 목록</NavLink>
           </li>
-          <li className="header-navigation__login">
-            <NavLink to="/user/signup">로그인</NavLink>
-          </li>
-          <li>
-            <NavLink to="/user/signup">회원가입</NavLink>
-          </li>
+          {props.isLoggedIn ? (
+            <>
+              <li>마이페이지</li>
+              <li>로그아웃</li>
+            </>
+          ) : (
+            <>
+              <li className="header-navigation__login">
+                <NavLink to="/user/signup">로그인</NavLink>
+              </li>
+              <li>
+                <NavLink to="/user/signup">회원가입</NavLink>
+              </li>
+            </>
+          )}
         </ul>
       </nav>
     </div>
   );
 };
 
-export default Header;
+const mapStateToProps = state => {
+  return state;
+};
+
+export default connect(mapStateToProps, null)(Header);
