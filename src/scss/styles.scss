@@ -15,11 +15,15 @@
 }
 
 .header-wrapper {
-  height: 40rem;
+  height: 37rem;
   background-image: $bg-img;
   background-repeat: cover;
   background-size: 100%;
   background-position: right 35% bottom 45%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .user-container {
@@ -52,6 +56,7 @@
     // background-image: url("/img/london-header.jpg");
     background-size: 100%;
     background-position: right 35% bottom 50%;
+
     display: grid;
     justify-content: center;
     align-items: center;
@@ -115,9 +120,31 @@
   }
 
   &-top {
+    position: relative;
+
     &__photo {
       height: 100%;
-      background-color: lightpink;
+      // background-color: lightpink;
+      img {
+        max-height: 100%;
+        max-width: 100%;
+        object-fit: cover;
+      }
+    }
+
+    &__heart {
+      position: absolute;
+      top: 0;
+      right: 0;
+      margin: 1rem;
+
+      svg {
+        cursor: pointer;
+
+        &:hover {
+          transform: translateY(-2px);
+        }
+      }
     }
   }
 
@@ -150,13 +177,15 @@
 */
 
 .header {
-  display: grid;
-  grid-template-columns: 1fr 35rem;
+  display: flex;
+  // grid-template-columns: 1fr 35rem;
   // max-width: 1060px;
+  justify-content: space-between;
 
   color: $black;
   font-weight: 400;
   margin: 2rem auto;
+  width: 100%;
 
   &-logo {
     font-size: 3rem;
@@ -169,11 +198,13 @@
   }
 
   &-navigation {
+    font-weight: 600;
     ul {
       display: flex;
       justify-content: space-around;
       align-items: center;
       height: 100%;
+      width: 30rem;
 
       li {
         cursor: pointer;
@@ -184,16 +215,30 @@
 }
 
 .search {
-  display: grid;
-  grid-template-rows: 2fr 1fr 1fr;
+  // display: grid;
+  // grid-template-rows: 2fr 1fr 1fr;
   height: 20rem;
   text-align: center;
+  margin-bottom: 3rem;
 
-  label {
-    font-size: 3rem;
-    margin-left: 2rem;
-    font-family: $bold;
-    // color: $beige;
+  &-title {
+    margin: 1rem auto;
+
+    &__main {
+      font-size: 4rem;
+      margin: 1rem;
+      // margin-left: 2rem;
+      // font-family: $bold;
+      font-weight: 600;
+      color: $beige;
+      text-shadow: 0 5px 5px rgba(129, 138, 148, 0.32);
+    }
+
+    &__sub {
+      font-size: 2rem;
+      font-weight: 600;
+      color: $beige;
+    }
   }
 
   input {

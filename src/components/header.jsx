@@ -9,12 +9,14 @@ const Header = props => {
       </div>
       <nav className="header-navigation">
         <ul>
-          <li>찜 목록</li>
           <li>
-            <NavLink to="/user">로그인</NavLink>
+            <NavLink to="/user/likes">찜 목록</NavLink>
           </li>
           <li>
-            <NavLink to="/user">회원가입</NavLink>
+            <NavLink to="/user/signin">로그인</NavLink>
+          </li>
+          <li>
+            <NavLink to="/user/signup">회원가입</NavLink>
           </li>
         </ul>
       </nav>

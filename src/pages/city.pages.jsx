@@ -29,8 +29,27 @@ class CityPage extends React.Component {
           adult_price: 35000,
           youth_price: 30000,
           location: "England SW1A 0AA London",
-          photo: "https://picsum.photos/200/300",
+          photo: "/img/london-header.jpg",
           category: "tour",
+          city: "London",
+          country: "England",
+          createdAt: ""
+        }
+      ],
+      ticketData: [
+        {
+          id: 4,
+          name: "런던 해리포터 스튜디오 입장권",
+          description: "황홀한 해리포터 마법의 세계로 떠나요~!!",
+          start_date: "2020-02-17",
+          end_date: "2020-02-17",
+          available_start_date: "2020-01-01",
+          available_end_date: "2020-07-30",
+          adult_price: 70000,
+          youth_price: 60000,
+          location: "Studio Tour Dr, Leavesden, Watford WD25 7LR England",
+          photo: "/img/hp-studio.jpg",
+          category: "ticket",
           city: "London",
           country: "England",
           createdAt: ""
@@ -40,7 +59,7 @@ class CityPage extends React.Component {
   }
 
   componentDidMount() {
-    var pathArray = window.location.pathname.split("/");
+    let pathArray = window.location.pathname.split("/");
     console.log(pathArray[2]);
     // city tour 랑 ticket 정보 불러오기
     // API.getCityData(cityName) 으로, 컴포넌트 마운트 되면서 넘어온 url string으로 도시 구분해서 데이터 받아서 랜더링
@@ -80,20 +99,20 @@ class CityPage extends React.Component {
         <div className="city-tour">
           <div className="city__title">🚩 {name_kor} 가이드 투어</div>
           <div className="city__list">
-            <ProductCard tourData={this.state.tourData[0]} />
-            <ProductCard tourData={this.state.tourData[0]} />
-            <ProductCard tourData={this.state.tourData[0]} />
-            <ProductCard tourData={this.state.tourData[0]} />
+            <ProductCard data={this.state.tourData[0]} />
+            <ProductCard data={this.state.tourData[0]} />
+            <ProductCard data={this.state.tourData[0]} />
+            <ProductCard data={this.state.tourData[0]} />
           </div>
         </div>
 
         <div className="city-ticket">
           <div className="city__title">🎫 {name_kor} 티켓</div>
           <div className="city__list">
-            {/* <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard /> */}
+            <ProductCard data={this.state.ticketData[0]} />
+            <ProductCard data={this.state.ticketData[0]} />
+            <ProductCard data={this.state.ticketData[0]} />
+            <ProductCard data={this.state.ticketData[0]} />
           </div>
         </div>
       </section>

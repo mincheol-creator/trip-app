@@ -16,9 +16,14 @@ function App() {
           <HomePage />
         </Route>
 
-        <Route path="/user">
+        <Route exact path="/user/signup">
           <Header />
-          <UserPage />
+          <UserPage pathname="signup" />
+        </Route>
+
+        <Route exact path="/user/likes">
+          <Header />
+          <UserPage pathname="likes" />
         </Route>
 
         <Route path="/product/:id">
