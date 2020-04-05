@@ -5,7 +5,7 @@ $beige: #ececec;
 $coral: #f78888;
 $black: #272727;
 
-$bg-img: url("/img/bg.jpg");
+$bg-img: url("/img/barcelona.jpg");
 
 /*
 * FONT
@@ -41,4 +41,34 @@ $bold: "Maple-bold", sans-serif;
   //   border-bottom: 1px solid $beige;
   padding: 2rem;
   margin: 1rem;
+}
+
+@mixin main-button {
+  display: block;
+  margin: 0.5rem;
+  width: 25rem;
+  height: 4rem;
+  text-align: center;
+  border: none;
+  font-size: 1.5rem;
+  font-weight: 500;
+  background-color: $blue;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $dark_blue;
+  }
+}
+
+@mixin sub-button {
+  display: block;
+  margin: 0.5rem;
+  width: 20rem;
+  height: 3rem;
+  text-align: center;
+  border: none;
+  font-size: 1.5rem;
+  font-weight: 500;
+  background-color: $beige;
+  cursor: pointer;
 }
