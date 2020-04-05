@@ -1,4 +1,6 @@
 import React from "react";
+import { connect } from "react-redux";
+
 import "../scss/styles.scss";
 import DayPicker from "react-day-picker";
 import "react-day-picker/lib/style.css";
@@ -116,4 +118,9 @@ class ProductPage extends React.Component {
     );
   }
 }
-export default ProductPage;
+
+const mapStateToProps = state => {
+  return state;
+};
+
+export default connect(mapStateToProps, null)(ProductPage);

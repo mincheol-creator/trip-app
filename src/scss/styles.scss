@@ -2,7 +2,7 @@
 @import "App.scss";
 
 /*
-* PAGES
+* HOME PAGE
 */
 .home-container {
   display: grid;
@@ -21,10 +21,167 @@
   justify-content: space-between;
 }
 
-.user-container {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  // background-color: $yellow;
+.header {
+  display: flex;
+  justify-content: space-between;
+
+  color: $black;
+  font-weight: 400;
+  margin: 3rem auto;
+  width: 100%;
+
+  &-logo {
+    font-size: 3rem;
+    margin-left: 3rem;
+    font-family: $bold;
+
+    a {
+      cursor: pointer;
+    }
+  }
+
+  &-navigation {
+    font-weight: 600;
+    ul {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      height: 100%;
+      width: 30rem;
+
+      li {
+        cursor: pointer;
+        font-size: 1.7rem;
+      }
+    }
+  }
+}
+
+.search {
+  // display: grid;
+  // grid-template-rows: 2fr 1fr 1fr;
+  height: 20rem;
+  text-align: center;
+  margin-bottom: 3rem;
+
+  &-title {
+    margin: 1rem auto;
+
+    &__main {
+      font-size: 4rem;
+      margin: 1rem;
+      // margin-left: 2rem;
+      // font-family: $bold;
+      font-weight: 600;
+      color: $beige;
+      text-shadow: 0 5px 5px rgba(129, 138, 148, 0.32);
+    }
+
+    &__sub {
+      font-size: 2rem;
+      font-weight: 600;
+      color: $beige;
+    }
+  }
+
+  input {
+    height: 4rem;
+    width: 60rem;
+    padding: 1rem;
+    font-size: 1.5rem;
+    margin: auto;
+
+    &:focus::placeholder {
+      color: transparent;
+    }
+  }
+}
+
+.city-preview {
+  @include centered;
+
+  &__title {
+    text-align: center;
+
+    &-main {
+      @include md-title;
+    }
+    &-sub {
+      font-size: 1.2rem;
+    }
+  }
+
+  &__list {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 3rem auto;
+  }
+}
+
+.tour-preview {
+  // display: flex;
+  // justify-content: space-around;
+  // align-items: center;
+  @include centered;
+
+  &__title {
+    text-align: center;
+
+    &-main {
+      @include md-title;
+    }
+    &-sub {
+      font-size: 1.2rem;
+    }
+  }
+
+  &__list {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 3rem auto;
+  }
+}
+
+.ticket-preview {
+  @include centered;
+
+  &__title {
+    text-align: center;
+
+    &-main {
+      @include md-title;
+    }
+    &-sub {
+      font-size: 1.2rem;
+    }
+  }
+
+  &__list {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 3rem auto;
+  }
+}
+
+.city-button {
+  cursor: pointer;
+  width: 13rem;
+  height: 13rem;
+  background-color: $blue;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  //   background-image: url("https://unsplash.it/200/200");
+  font-size: 2rem;
+
+  &:hover {
+    background-color: yellow;
+    transform: translateY(-1rem);
+  }
 }
 
 /*
@@ -240,7 +397,7 @@
     position: relative;
 
     &__title {
-      @include md-title;
+      @include sm-title;
     }
 
     &__review {
@@ -259,137 +416,14 @@
 }
 
 /*
-* COMPONENTS
+* USER PAGE
 */
 
-.header {
-  display: flex;
-  justify-content: space-between;
-
-  color: $black;
-  font-weight: 400;
-  margin: 3rem auto;
-  width: 100%;
-
-  &-logo {
-    font-size: 3rem;
-    margin-left: 3rem;
-    font-family: $bold;
-
-    a {
-      cursor: pointer;
-    }
-  }
-
-  &-navigation {
-    font-weight: 600;
-    ul {
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      height: 100%;
-      width: 30rem;
-
-      li {
-        cursor: pointer;
-        font-size: 1.7rem;
-      }
-    }
-  }
+.user-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  // background-color: $yellow;
 }
-
-.search {
-  // display: grid;
-  // grid-template-rows: 2fr 1fr 1fr;
-  height: 20rem;
-  text-align: center;
-  margin-bottom: 3rem;
-
-  &-title {
-    margin: 1rem auto;
-
-    &__main {
-      font-size: 4rem;
-      margin: 1rem;
-      // margin-left: 2rem;
-      // font-family: $bold;
-      font-weight: 600;
-      color: $beige;
-      text-shadow: 0 5px 5px rgba(129, 138, 148, 0.32);
-    }
-
-    &__sub {
-      font-size: 2rem;
-      font-weight: 600;
-      color: $beige;
-    }
-  }
-
-  input {
-    height: 4rem;
-    width: 60rem;
-    padding: 1rem;
-    font-size: 1.5rem;
-    margin: auto;
-
-    &:focus::placeholder {
-      color: transparent;
-    }
-  }
-}
-
-.city-preview {
-  height: 20rem;
-  background-color: lightgreen;
-  @include centered;
-
-  &__title {
-    font-size: 1.7rem;
-    font-weight: 600;
-  }
-
-  &__list {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-  }
-}
-
-.tour-preview {
-  height: 20rem;
-  background-color: lightcoral;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  @include centered;
-}
-.ticket-preview {
-  height: 20rem;
-  background-color: lightgrey;
-  @include centered;
-}
-
-.city-button {
-  cursor: pointer;
-  width: 13rem;
-  height: 13rem;
-  background-color: lightyellow;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  //   background-image: url("https://unsplash.it/200/200");
-  font-size: 2rem;
-
-  &:hover {
-    background-color: yellow;
-    transform: translateY(-1rem);
-  }
-}
-
-/*
-* Signin / Signup
-*/
 
 .signin,
 .signup {

@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 
 import SignIn from "../components/signin";
 import SignUp from "../components/signup";
@@ -36,4 +37,9 @@ class UserPage extends React.Component {
     );
   }
 }
-export default UserPage;
+
+const mapStateToProps = state => {
+  return state;
+};
+
+export default connect(mapStateToProps, null)(UserPage);

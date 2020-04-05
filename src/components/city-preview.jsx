@@ -25,7 +25,12 @@ const cityData = [
 const CityPreview = props => {
   return (
     <div className="city-preview">
-      <div className="city-preview__title">❤️ 인기 여행지</div>
+      <div className="city-preview__title">
+        <div className="city-preview__title-main">🏰 인기 여행지</div>
+        <div className="city-preview__title-sub">
+          모두의 여행이 추천하는 여행지!
+        </div>
+      </div>
       <div className="city-preview__list">
         {cityData.map(city => (
           <CityButton key={city.id + city.name_eng} data={city} />

@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 
 import ProductCard from "../components/product-card";
 
@@ -120,4 +121,8 @@ class CityPage extends React.Component {
   }
 }
 
-export default CityPage;
+const mapStateToProps = state => {
+  return state;
+};
+
+export default connect(mapStateToProps, null)(CityPage);
