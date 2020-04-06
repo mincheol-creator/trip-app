@@ -1,8 +1,11 @@
 import axios from "axios";
 
-axios.defaults.withCredentials = true;
+axios.defaults.withCredentials = false;
+
 // const url = process.env.REACT_APP_SERVER_URL;
 const url = "70.12.227.32:8181";
+
+const API_KEY = process.env.REACT_APP_KAKAO_KEY;
 
 /*
  * USER
@@ -23,15 +26,15 @@ const getCustomer = (email, password) => {
   });
 };
 
-const getPreview = () => {
-  return axios.post(`http://${url}/product/getProductPreview`, {});
-};
+// const getPreview = () => {
+//   return axios.post(`http://${url}/product/getProductPreview`, {});
+// };
 
-const selectProduct = id => {
-  return axios.post(`http://${url}/product/getProduct`, {
-    id
-  });
-};
+// const selectProduct = id => {
+//   return axios.post(`http://${url}/product/getProduct`, {
+//     id
+//   });
+// };
 /*
  * CITY
  */
@@ -40,4 +43,15 @@ const selectProduct = id => {
 //     return axios.post(url, {cityname})
 // }
 
-export default { addCustomer, getCustomer };
+const getKakaoLogin = () => {
+  window.location.href = `http://${url}/kakao`;
+};
+
+const getKakaoLogout = () => {};
+
+export default {
+  addCustomer,
+  getCustomer,
+  getKakaoLogin,
+  getKakaoLogout
+};

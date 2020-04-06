@@ -14,12 +14,12 @@ import Cookies from "universal-cookie";
 
 import store from "../src/redux/store";
 import addCustomer from "../src/redux/customer/customer.action";
+import KaKao from "./components/kakao";
 
 const cookies = new Cookies();
 
 function App() {
   React.useEffect(() => {
-    console.log(cookies.get("loggedIn"));
     if (cookies.get("loggedIn")) {
       store.dispatch(
         addCustomer({
@@ -69,6 +69,10 @@ function App() {
           <Header />
           <CityPage />
           <Footer />
+        </Route>
+
+        <Route path="/oauth">
+          <KaKao />
         </Route>
       </Switch>
     </div>
