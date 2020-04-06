@@ -16,9 +16,9 @@ const TicketPreview = ({ ticket }) => {
       </header>
       <div className="ticket-preview__list">
         <ProductCard data={ticket[0]} />
-        <ProductCard data={ticket[0]} />
-        <ProductCard data={ticket[0]} />
-        <ProductCard data={ticket[0]} />
+        <ProductCard data={ticket[1]} />
+        <ProductCard data={ticket[2]} />
+        <ProductCard data={ticket[3]} />
       </div>
     </div>
   );

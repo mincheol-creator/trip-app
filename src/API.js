@@ -2,7 +2,7 @@ import axios from "axios";
 
 axios.defaults.withCredentials = true;
 // const url = process.env.REACT_APP_SERVER_URL;
-const url = "70.12.227.32:8181";
+const url = "70.12.226.41:8181";
 
 /*
  * USER
@@ -11,7 +11,7 @@ const url = "70.12.227.32:8181";
 const addCustomer = (email, password) => {
   return axios.post(`http://${url}/customer/signup`, {
     email,
-    password
+    password,
   });
 };
 
@@ -19,17 +19,25 @@ const getCustomer = (email, password) => {
   console.log(url);
   return axios.post(`http://${url}/customer/signin`, {
     email,
-    password
+    password,
   });
+};
+
+const getTourPreview = () => {
+  return axios.post(`http://${url}/product/getTourPreview`, {});
+};
+
+const getTicketPreview = () => {
+  return axios.post(`http://${url}/product/getTicketPreview`, {});
 };
 
 const getPreview = () => {
   return axios.post(`http://${url}/product/getProductPreview`, {});
 };
 
-const selectProduct = id => {
+const selectProduct = (id) => {
   return axios.post(`http://${url}/product/getProduct`, {
-    id
+    id,
   });
 };
 /*
@@ -40,4 +48,4 @@ const selectProduct = id => {
 //     return axios.post(url, {cityname})
 // }
 
-export default { addCustomer, getCustomer };
+export default { addCustomer, getCustomer, getTourPreview, getTicketPreview };

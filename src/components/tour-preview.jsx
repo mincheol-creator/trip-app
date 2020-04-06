@@ -15,9 +15,9 @@ const TourPreview = ({ tour }) => {
       </header>
       <div className="tour-preview__list">
         <ProductCard data={tour[0]} />
-        <ProductCard data={tour[0]} />
-        <ProductCard data={tour[0]} />
-        <ProductCard data={tour[0]} />
+        <ProductCard data={tour[1]} />
+        <ProductCard data={tour[2]} />
+        <ProductCard data={tour[3]} />
       </div>
     </div>
   );
