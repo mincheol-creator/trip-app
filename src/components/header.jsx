@@ -1,9 +1,17 @@
 import React from "react";
 import { connect } from "react-redux";
-
 import { NavLink } from "react-router-dom";
 
+import Cookies from "universal-cookie";
+
+const cookies = new Cookies();
+
 const Header = props => {
+  const handleLogout = () => {
+    cookies.remove("loggedIn");
+    window.location.href = "/";
+  };
+
   return (
     <div className="header">
       <div className="header-logo">
@@ -14,12 +22,12 @@ const Header = props => {
           <li>
             <NavLink to="/user/likes">찜 목록</NavLink>
           </li>
-          {props.isLoggedIn ? (
+          {props.customer.isLoggedIn ? (
             <>
               <li>
                 <NavLink to="/user/dashboard">마이페이지</NavLink>
               </li>
-              <li>로그아웃</li>
+              <li onClick={handleLogout}>로그아웃</li>
             </>
           ) : (
             <>

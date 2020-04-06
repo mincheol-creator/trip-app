@@ -1,7 +1,8 @@
 import axios from "axios";
 
 axios.defaults.withCredentials = true;
-const url = "localhost:8080"; // Server URL
+// const url = process.env.REACT_APP_SERVER_URL;
+const url = "70.12.227.32:8181";
 
 /*
  * USER
@@ -15,6 +16,7 @@ const addCustomer = (email, password) => {
 };
 
 const getCustomer = (email, password) => {
+  console.log(url);
   return axios.post(`http://${url}/customer/signin`, {
     email,
     password

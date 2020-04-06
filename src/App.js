@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 import { Switch, Route } from "react-router-dom";
 import "./scss/App.scss";
 
@@ -9,7 +10,30 @@ import ProductPage from "./pages/product.pages";
 import CityPage from "./pages/city.pages";
 import Footer from "./components/footer";
 
+import Cookies from "universal-cookie";
+
+import store from "../src/redux/store";
+import addCustomer from "../src/redux/customer/customer.action";
+
+const cookies = new Cookies();
+
 function App() {
+  React.useEffect(() => {
+    console.log(cookies.get("loggedIn"));
+    if (cookies.get("loggedIn")) {
+      store.dispatch(
+        addCustomer({
+          isLoggedIn: true
+        })
+      );
+    } else {
+      store.dispatch(
+        addCustomer({
+          isLoggedIn: false
+        })
+      );
+    }
+  }, []);
   return (
     <div className="App">
       <Switch>
@@ -51,4 +75,8 @@ function App() {
   );
 }
 
-export default App;
+const mapStateToProps = state => {
+  return state;
+};
+
+export default connect(mapStateToProps, null)(App);
