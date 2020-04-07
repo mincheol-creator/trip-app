@@ -8,6 +8,7 @@ import HomePage from "./pages/home.pages";
 import UserPage from "./pages/user.pages";
 import ProductPage from "./pages/product.pages";
 import CityPage from "./pages/city.pages";
+import PaymentPage from "./pages/payment.pages";
 import Footer from "./components/footer";
 
 import Cookies from "universal-cookie";
@@ -59,19 +60,25 @@ function App() {
           <Footer />
         </Route>
 
-        <Route path="/product/:id">
+        <Route exact path="/product/:id">
           <Header />
           <ProductPage />
           <Footer />
         </Route>
 
-        <Route path="/city/:name">
+        <Route exact path="/pay">
+          <Header />
+          <PaymentPage />
+          <Footer />
+        </Route>
+
+        <Route exact path="/city/:name">
           <Header />
           <CityPage />
           <Footer />
         </Route>
 
-        <Route path="/oauth">
+        <Route exact path="/oauth">
           <KaKao />
         </Route>
       </Switch>

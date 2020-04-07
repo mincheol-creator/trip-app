@@ -80,8 +80,6 @@
     &__main {
       font-size: 4rem;
       margin: 1rem;
-      // margin-left: 2rem;
-      // font-family: $bold;
       font-weight: 600;
       color: $beige;
       text-shadow: 0 5px 5px rgba(129, 138, 148, 0.32);
@@ -476,6 +474,104 @@
 
 .liked-products {
   @include centered;
+
+  &__title {
+    @include lg-title;
+    border-left: 10px solid $blue;
+    padding-left: 5px;
+    margin: 3rem 0;
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(4, 25rem);
+    grid-gap: 2rem;
+    width: 100%;
+    margin: auto;
+  }
+}
+
+.user-dashboard {
+  @include centered;
+  display: grid;
+  grid-template-columns: 30rem 1fr;
+
+  &-side {
+    display: grid;
+    grid-template-rows: 1fr 5rem 2fr;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(129, 138, 148, 0.32);
+    margin: 0 3rem;
+    padding: 1rem;
+
+    .user-profile {
+      text-align: center;
+      border-bottom: 1px solid $beige;
+
+      &__pic {
+        content: "";
+        background-color: $blue;
+        border-radius: 50%;
+        width: 15rem;
+        height: 15rem;
+        margin: auto;
+      }
+
+      &__name {
+        @include md-title;
+        padding: 1rem;
+      }
+    }
+
+    .user-point {
+      // display: flex;
+      // justify-content: center;
+      // align-content: center;
+      padding: 1rem;
+      margin: auto 0;
+      border-bottom: 1px solid $beige;
+      font-size: 1.5rem;
+      span {
+        @include sm-title;
+      }
+    }
+
+    .user-menu {
+      li {
+        font-size: 1.8rem;
+        display: block;
+        padding: 1rem;
+        margin: auto;
+        cursor: pointer;
+
+        &:hover {
+          background-color: $blue;
+          color: white;
+        }
+      }
+    }
+  }
+
+  &-main {
+    box-shadow: 0 2px 5px rgba(129, 138, 148, 0.32);
+  }
+}
+
+/*
+* PAYMENT
+*/
+
+.product-pay {
+  @include centered;
+
+  &__main-message {
+    @include lg-title;
+    text-align: center;
+
+    span {
+      color: $dark_blue;
+    }
+  }
 }
 
 /*
