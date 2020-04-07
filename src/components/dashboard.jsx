@@ -1,8 +1,33 @@
 import React from "react";
 
 import "../scss/styles.scss";
+import LikedProducts from "./likedProducts";
+import ReviewForm from "./review-form";
 
 const DashBoard = props => {
+  const [menu, setMenu] = React.useState("default");
+
+  const renderMain = menu => {
+    switch (menu) {
+      case "review":
+        return <ReviewForm />;
+      default:
+        return (
+          <>
+            <div className="review-ask">
+              <header>여행 후기</header>
+              <div className="review-ask__btn">
+                <button onClick={() => setMenu("review")}>
+                  <span>2</span> 개의 여행 후기 작성 가능
+                </button>
+              </div>
+            </div>
+            <LikedProducts />
+          </>
+        );
+    }
+  };
+
   return (
     <div className="user-dashboard">
       <aside className="user-dashboard-side">
@@ -15,16 +40,16 @@ const DashBoard = props => {
         </div>
         <div className="user-menu">
           <ul>
+            <li onClick={() => setMenu("default")}>대시보드</li>
             <li>구매내역</li>
             <li>찜 목록</li>
-            <li>리뷰작성</li>
+            <li onClick={() => setMenu("review")}>리뷰작성</li>
             <li>계정설정</li>
           </ul>
         </div>
       </aside>
-      <section className="user-dashboard-main">
-        메인파트. 유저가 구매한 내역 등이 랜더링
-      </section>
+
+      <section className="user-dashboard-main">{renderMain(menu)}</section>
     </div>
   );
 };
