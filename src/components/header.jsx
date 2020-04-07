@@ -4,11 +4,19 @@ import { NavLink } from "react-router-dom";
 
 import Cookies from "universal-cookie";
 
+import store from "../redux/store";
+import addCustomer from "../redux/customer/customer.action";
+
 const cookies = new Cookies();
 
 const Header = props => {
   const handleLogout = () => {
     cookies.remove("loggedIn");
+    store.dispatch(
+      addCustomer({
+        isLoggedIn: false
+      })
+    );
     window.location.href = "/";
   };
 

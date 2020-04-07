@@ -27,8 +27,8 @@ class ProductPage extends React.Component {
         category: "tour",
         city: "London",
         country: "England",
-        createdAt: ""
-      }
+        createdAt: "",
+      },
     };
   }
 
@@ -50,6 +50,12 @@ class ProductPage extends React.Component {
   //   });
   // }
 
+  handleLikeBtn = (event) => {
+    event.preventDefault();
+
+    alert(`${this.state.productData.id} 상품이 찜 목록에 추가되었습니다.`);
+  };
+
   render() {
     const {
       id,
@@ -65,7 +71,7 @@ class ProductPage extends React.Component {
       photo,
       category,
       city,
-      country
+      country,
     } = this.state.productData;
     return (
       <div className="product">
@@ -109,8 +115,8 @@ class ProductPage extends React.Component {
             <p>24시간 이내 확정</p>
           </div>
           <div className="product-side__buttons">
-            <button>구매하기</button>
-            <button>❤️ 찜 목록에 넣기</button>
+            <button onClick={API.kakaopayPurchase}>구매하기</button>
+            <button onClick={this.handleLikeBtn}>❤️ 찜 목록에 넣기</button>
             <div className="likes-content">50명이 찜 목록에 담았습니다</div>
           </div>
         </aside>
@@ -119,7 +125,7 @@ class ProductPage extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return state;
 };
 
