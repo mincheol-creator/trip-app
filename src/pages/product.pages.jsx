@@ -50,6 +50,12 @@ class ProductPage extends React.Component {
   //   });
   // }
 
+  handleLikeBtn = (event) => {
+    event.preventDefault();
+
+    alert(`${this.state.productData.id} 상품이 찜 목록에 추가되었습니다.`);
+  };
+
   render() {
     const {
       id,
@@ -110,7 +116,7 @@ class ProductPage extends React.Component {
           </div>
           <div className="product-side__buttons">
             <button onClick={API.kakaopayPurchase}>구매하기</button>
-            <button>❤️ 찜 목록에 넣기</button>
+            <button onClick={this.handleLikeBtn}>❤️ 찜 목록에 넣기</button>
             <div className="likes-content">50명이 찜 목록에 담았습니다</div>
           </div>
         </aside>

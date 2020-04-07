@@ -72,13 +72,11 @@ const SignIn = props => {
 
         <button type="submit">로그인</button>
       </form>
-      {/* <div className="kakao-login-btn"> {createKakaoBtn()}</div> */}
-      <img
-        onClick={API.getKakaoLogin}
-        className="kakao-login-btn"
-        src="/img/kakao_login_btn_medium_wide.png"
-        alt="kakao login"
-      />
+      <div className="kakao-login">
+        <button className="kakao-login-btn" onClick={API.getKakaoLogin}>
+          카카오 로그인
+        </button>
+      </div>
     </div>
   );
 };
