@@ -9,8 +9,14 @@ const DashBoard = props => {
 
   const renderMain = menu => {
     switch (menu) {
+      case "orders":
+        return;
       case "review":
         return <ReviewForm />;
+      case "likes":
+        return <LikedProducts />;
+      case "setting":
+        return;
       default:
         return (
           <>
@@ -41,10 +47,10 @@ const DashBoard = props => {
         <div className="user-menu">
           <ul>
             <li onClick={() => setMenu("default")}>대시보드</li>
-            <li>구매내역</li>
-            <li>찜 목록</li>
+            <li onClick={() => setMenu("orders")}>구매내역</li>
+            <li onClick={() => setMenu("likes")}>찜 목록</li>
             <li onClick={() => setMenu("review")}>리뷰작성</li>
-            <li>계정설정</li>
+            <li onClick={() => setMenu("setting")}>계정설정</li>
           </ul>
         </div>
       </aside>
