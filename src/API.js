@@ -15,7 +15,7 @@ const API_KEY = process.env.REACT_APP_KAKAO_KEY;
 const addCustomer = (email, password) => {
   return axios.post(`http://${url}/customer/signup`, {
     email,
-    password
+    password,
   });
 };
 
@@ -23,7 +23,7 @@ const getCustomer = (email, password) => {
   console.log(url);
   return axios.post(`http://${url}/customer/signin`, {
     email,
-    password
+    password,
   });
 };
 
@@ -39,9 +39,9 @@ const getPreview = () => {
   return axios.post(`http://${url}/product/getProductPreview`, {});
 };
 
-const selectProduct = id => {
+const selectProduct = (id) => {
   return axios.post(`http://${url}/product/getProduct`, {
-    id
+    id,
   });
 };
 /*
@@ -58,11 +58,16 @@ const getKakaoLogin = () => {
 
 const getKakaoLogout = () => {};
 
+const kakaopayPurchase = () => {
+  window.location.href = `http://${url}/kakao/pay`;
+};
+
 export default {
   addCustomer,
   getCustomer,
   getTourPreview,
   getTicketPreview,
   getKakaoLogin,
-  getKakaoLogout
+  getKakaoLogout,
+  kakaopayPurchase,
 };
