@@ -14,7 +14,7 @@ const API_KEY = process.env.REACT_APP_KAKAO_KEY;
 const addCustomer = (email, password) => {
   return axios.post(`http://${url}/customer/signup`, {
     email,
-    password
+    password,
   });
 };
 
@@ -22,8 +22,12 @@ const getCustomer = (email, password) => {
   console.log(url);
   return axios.post(`http://${url}/customer/signin`, {
     email,
-    password
+    password,
   });
+};
+
+const getCityPreview = () => {
+  return axios.post(`http://${url}/product/getCityPreview`, {});
 };
 
 const getTourPreview = () => {
@@ -34,13 +38,19 @@ const getTicketPreview = () => {
   return axios.post(`http://${url}/product/getTicketPreview`, {});
 };
 
+const getCityDetailPreview = (sendCityName) => {
+  return axios.post(`http://${url}/product/getCityDetailPreview`, {
+    sendCityName,
+  });
+};
+
 const getPreview = () => {
   return axios.post(`http://${url}/product/getProductPreview`, {});
 };
 
-const selectProduct = id => {
+const selectProduct = (id) => {
   return axios.post(`http://${url}/product/getProduct`, {
-    id
+    id,
   });
 };
 /*
@@ -62,6 +72,8 @@ export default {
   getCustomer,
   getTourPreview,
   getTicketPreview,
+  getCityPreview,
   getKakaoLogin,
-  getKakaoLogout
+  getKakaoLogout,
+  getCityDetailPreview,
 };

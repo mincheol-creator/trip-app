@@ -2,7 +2,8 @@ import React from "react";
 
 import "../scss/styles.scss";
 
-const CityButton = props => {
+const CityButton = (props) => {
+  console.log(props);
   const handleClick = () => {
     console.log(window.location.href);
     window.location.href = `/city/${props.data.name_eng}`;

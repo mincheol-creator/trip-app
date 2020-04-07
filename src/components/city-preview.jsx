@@ -2,7 +2,7 @@ import React from "react";
 
 import "../scss/styles.scss";
 import CityButton from "./city-button";
-
+/* 
 const cityData = [
   {
     id: 0,
@@ -35,8 +35,8 @@ const cityData = [
     image: "/img/alps.jpg"
   }
 ];
-
-const CityPreview = props => {
+ */
+const CityPreview = ({ city }) => {
   return (
     <div className="city-preview">
       <header className="city-preview__title">
@@ -46,7 +46,7 @@ const CityPreview = props => {
         </div>
       </header>
       <div className="city-preview__list">
-        {cityData.map(city => (
+        {city.map((city) => (
           <CityButton key={city.id + city.name_eng} data={city} />
         ))}
       </div>
