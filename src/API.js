@@ -77,6 +77,7 @@ const getKakaoLogout = () => {};
 const kakaopayPurchase = (name, total_amount) => {
   //window.location.href = `http://${url}/kakao/pay`;
   const send_param = {
+    headers,
     name,
     total_amount,
   };
