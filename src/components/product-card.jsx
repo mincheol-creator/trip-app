@@ -8,11 +8,11 @@ const ProductCard = ({ data }) => {
   };
   // console.log(data);
 
-  const currencyFormat = num => {
+  const currencyFormat = (num) => {
     return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
   };
 
-  const addToLikes = event => {
+  const addToLikes = (event) => {
     event.stopPropagation();
     // window.location.href = `/user/likes`;
     setLiked(!liked);
@@ -22,7 +22,7 @@ const ProductCard = ({ data }) => {
     <div className="product-card" onClick={handleClick}>
       <div className="product-card-top">
         <div className="product-card-top__photo">
-          <img src={data.photo} alt="Tour" />
+          <img src={`http://localhost:8181/image/${data.photo}`} alt="Tour" />
         </div>
         <div className="product-card-top__heart">
           {liked ? (

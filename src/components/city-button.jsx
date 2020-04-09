@@ -13,7 +13,9 @@ const CityButton = (props) => {
     <div
       className="city-button"
       onClick={handleClick}
-      style={{ backgroundImage: `url("${props.data.image}")` }}
+      style={{
+        backgroundImage: `url("http://localhost:8181/image/${props.data.image}")`,
+      }}
     >
       <span className="city-button__name">{props.data.name_kor}</span>
     </div>
