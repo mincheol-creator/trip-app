@@ -6,7 +6,6 @@ const ProductCard = ({ data }) => {
   const handleClick = () => {
     window.location.href = `/product/${data.id}`;
   };
-  // console.log(data);
 
   const currencyFormat = num => {
     return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
@@ -14,7 +13,7 @@ const ProductCard = ({ data }) => {
 
   const addToLikes = event => {
     event.stopPropagation();
-    // window.location.href = `/user/likes`;
+    // DB의 해당 유저 liked 목록 비교해서 추가됐다면 그냥 냅두고 목록에 없으면 추가
     setLiked(!liked);
   };
 
@@ -26,9 +25,7 @@ const ProductCard = ({ data }) => {
           style={{
             backgroundImage: `url("http://${process.env.REACT_APP_SERVER_URL}/image/${data.photo}")`
           }}
-        >
-          {/* <img src={} alt="Tour" /> */}
-        </div>
+        ></div>
         <div className="product-card-top__heart">
           {liked ? (
             <>

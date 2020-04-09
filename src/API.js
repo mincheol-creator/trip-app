@@ -74,7 +74,7 @@ const kakaopayPurchase = () => {
  * Userpage
  */
 const addReview = (pId, star, content) => {
-  return axios.post(`http://${url}/product/addReview`, {
+  return axios.post(`http://${url}/product/createReview`, {
     product_id: pId,
     star,
     content
