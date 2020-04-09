@@ -6,8 +6,6 @@ axios.defaults.withCredentials = false;
 const url = "70.12.226.41:8181";
 // const url = "70.12.227.32:8181";
 
-const API_KEY = process.env.REACT_APP_KAKAO_KEY;
-
 /*
  * USER
  */
@@ -49,9 +47,9 @@ const getPreview = () => {
   return axios.post(`http://${url}/product/getProductPreview`, {});
 };
 
-const selectProduct = id => {
-  return axios.post(`http://${url}/product/getProduct`, {
-    id
+const selectProduct = sendProductID => {
+  return axios.post(`http://${url}/product/selectProduct`, {
+    sendProductID
   });
 };
 /*
@@ -93,5 +91,6 @@ export default {
   getKakaoLogout,
   getCityDetailPreview,
   kakaopayPurchase,
-  addReview
+  addReview,
+  selectProduct
 };
