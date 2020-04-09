@@ -2,7 +2,9 @@ import axios from "axios";
 
 axios.defaults.withCredentials = false;
 
-const url = process.env.REACT_APP_SERVER_URL;
+// const url = process.env.REACT_APP_SERVER_URL;
+const url = "70.12.226.41:8181";
+// const url = "70.12.227.32:8181";
 
 const API_KEY = process.env.REACT_APP_KAKAO_KEY;
 
@@ -74,7 +76,7 @@ const kakaopayPurchase = () => {
  * Userpage
  */
 const addReview = (pId, star, content) => {
-  return axios.post(`http://${url}/product/createReview`, {
+  return axios.post(`http://${url}/product/addReview`, {
     product_id: pId,
     star,
     content

@@ -42,3 +42,7 @@
 
 - ReactJS, Node.js, MySQL
 - https://react-day-picker.js.org/
+
+## Reference
+
+해당 토이프로젝트에 나오는 문구들은 KLOOK과 마이리얼트립 홈페이지를 참조했습니다.

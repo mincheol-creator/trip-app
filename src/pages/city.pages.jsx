@@ -70,10 +70,10 @@ class CityPage extends React.Component {
               <div className="city-desc__content">
                 <div className="city-desc__description"> {cityData.desc}</div>
                 <div className="city-desc__map">
-                  <img
-                    src={`https://maps.googleapis.com/maps/api/staticmap?center=${cityData.name_kor}&zoom=14&size=250x250&key=${process.env.REACT_APP_GOOGLE_KEY}`}
+                  {/* <img
+                    src={`https://maps.googleapis.com/maps/api/staticmap?center=${cityData.name_eng}&zoom=14&size=250x250&key=${process.env.REACT_APP_GOOGLE_KEY}`}
                     alt="City google map"
-                  />
+                  /> */}
                 </div>
               </div>
             </div>
@@ -83,12 +83,8 @@ class CityPage extends React.Component {
                 🚩 {cityData.name_kor} 가이드 투어
               </div>
               <div className="city__list">
-                {/* <ProductCard data={this.state.tourData[0]} />
-                <ProductCard data={this.state.tourData[0]} />
-                <ProductCard data={this.state.tourData[0]} />
-                <ProductCard data={this.state.tourData[0]} /> */}
                 {tourData.map(tourData => (
-                  <ProductCard data={tourData} />
+                  <ProductCard key={tourData.id} data={tourData} />
                 ))}
               </div>
             </div>
@@ -96,12 +92,8 @@ class CityPage extends React.Component {
             <div className="city-ticket">
               <div className="city__title">🎫 {cityData.name_kor} 티켓</div>
               <div className="city__list">
-                {/* <ProductCard data={this.state.ticketData[0]} />
-                <ProductCard data={this.state.ticketData[0]} />
-                <ProductCard data={this.state.ticketData[0]} />
-                <ProductCard data={this.state.ticketData[0]} /> */}
                 {ticketData.map(ticketData => (
-                  <ProductCard data={ticketData} />
+                  <ProductCard key={ticketData.id} data={ticketData} />
                 ))}
               </div>
             </div>

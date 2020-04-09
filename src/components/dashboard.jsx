@@ -12,6 +12,9 @@ const DashBoard = props => {
   React.useEffect(() => {
     // 리뷰 작성해야할 개수 불러오기 (isComplete === false인 데이터 개수)
     // API.getReviewNum(customer_id)
+
+    // 유저의 포인트 불러오기
+    setPoint(10);
   }, []);
 
   const renderMain = menu => {
@@ -37,8 +40,13 @@ const DashBoard = props => {
             </div>
             <div className="liked-sample">
               <LikedProducts />
-              <button className="liked-product__fullRender-btn">더보기</button>
-              {/* 찜목록에서 세개만 불러오고 더보기 버튼 */}
+              <button
+                className="liked-product__fullRender-btn"
+                onClick={() => setMenu("likes")}
+              >
+                더보기
+              </button>
+              {/* 찜목록에서 세개만! 불러오고 더보기 버튼 */}
             </div>
           </>
         );
@@ -49,7 +57,12 @@ const DashBoard = props => {
     <div className="user-dashboard">
       <aside className="user-dashboard-side">
         <div className="user-profile">
-          <div className="user-profile__pic"></div>
+          <div
+            className="user-profile__pic"
+            style={{
+              backgroundImage: `url("/img/porto.jpg")`
+            }}
+          ></div>
           <div className="user-profile__name">Minha Koo</div>
         </div>
         <div className="user-point">

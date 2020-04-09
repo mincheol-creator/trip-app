@@ -11,7 +11,6 @@ import addCustomer from "../redux/customer/customer.action";
 import "../scss/styles.scss";
 
 const cookies = new Cookies();
-const API_KEY = process.env.REACT_APP_KAKAO_KEY;
 
 const SignIn = props => {
   React.useEffect(() => {
