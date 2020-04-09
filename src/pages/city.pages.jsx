@@ -15,7 +15,7 @@ class CityPage extends React.Component {
       // dummy data
       cityData: null,
       tourData: null,
-      ticketData: null
+      ticketData: null,
     };
   }
 
@@ -23,14 +23,14 @@ class CityPage extends React.Component {
     console.log(this.state.cityName);
     let sendCityName = this.state.cityName;
     console.log(sendCityName);
-    await API.getCityDetailPreview(sendCityName).then(response => {
+    await API.getCityDetailPreview(sendCityName).then((response) => {
       console.log(response.data.cityMessage);
       console.log(response.data.tourMessage);
       console.log(response.data.ticketMessage);
       this.setState({
         cityData: response.data.cityMessage,
         tourData: response.data.tourMessage,
-        ticketData: response.data.ticketMessage
+        ticketData: response.data.ticketMessage,
       });
     });
 
@@ -51,7 +51,9 @@ class CityPage extends React.Component {
           <>
             <div
               className="city-header"
-              style={{ backgroundImage: `url("/img/london-header.jpg")` }}
+              style={{
+                backgroundImage: `url("http://localhost:8181/image/${cityData.image}")`,
+              }}
             >
               <div className="city-header__name">
                 <div className="city-header__name-main">
@@ -87,7 +89,7 @@ class CityPage extends React.Component {
                 <ProductCard data={this.state.tourData[0]} />
                 <ProductCard data={this.state.tourData[0]} />
                 <ProductCard data={this.state.tourData[0]} /> */}
-                {tourData.map(tourData => (
+                {tourData.map((tourData) => (
                   <ProductCard data={tourData} />
                 ))}
               </div>
@@ -100,7 +102,7 @@ class CityPage extends React.Component {
                 <ProductCard data={this.state.ticketData[0]} />
                 <ProductCard data={this.state.ticketData[0]} />
                 <ProductCard data={this.state.ticketData[0]} /> */}
-                {ticketData.map(ticketData => (
+                {ticketData.map((ticketData) => (
                   <ProductCard data={ticketData} />
                 ))}
               </div>
@@ -112,7 +114,7 @@ class CityPage extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return state;
 };
 
