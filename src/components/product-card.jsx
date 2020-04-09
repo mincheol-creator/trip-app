@@ -8,11 +8,11 @@ const ProductCard = ({ data }) => {
   };
   // console.log(data);
 
-  const currencyFormat = (num) => {
+  const currencyFormat = num => {
     return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
   };
 
-  const addToLikes = (event) => {
+  const addToLikes = event => {
     event.stopPropagation();
     // window.location.href = `/user/likes`;
     setLiked(!liked);
@@ -21,8 +21,13 @@ const ProductCard = ({ data }) => {
   return (
     <div className="product-card" onClick={handleClick}>
       <div className="product-card-top">
-        <div className="product-card-top__photo">
-          <img src={`http://localhost:8181/image/${data.photo}`} alt="Tour" />
+        <div
+          className="product-card-top__photo"
+          style={{
+            backgroundImage: `url("http://70.12.226.41:8181/image/${data.photo}")`
+          }}
+        >
+          {/* <img src={} alt="Tour" /> */}
         </div>
         <div className="product-card-top__heart">
           {liked ? (
@@ -68,7 +73,7 @@ const ProductCard = ({ data }) => {
           <span className="reviews">(200개의 후기)</span>
         </div>
         <div className="product-card-bottom__price">
-          {/* currencyFormat */ data.adult_price}원 / 1인
+          {currencyFormat(data.adult_price)}원 / 1인
         </div>
       </div>
     </div>

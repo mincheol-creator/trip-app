@@ -72,10 +72,10 @@ class CityPage extends React.Component {
               <div className="city-desc__content">
                 <div className="city-desc__description"> {cityData.desc}</div>
                 <div className="city-desc__map">
-                  <img
-                    src="https://maps.googleapis.com/maps/api/staticmap?center=London&zoom=14&size=250x250&key=REACT_APP_GOOGLE_KEY"
+                  {/* <img
+                    src={`https://maps.googleapis.com/maps/api/staticmap?center=London&zoom=14&size=250x250&key=${process.env.REACT_APP_GOOGLE_KEY}`}
                     alt="City google map"
-                  />
+                  /> */}
                 </div>
               </div>
             </div>

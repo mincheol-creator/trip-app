@@ -193,6 +193,7 @@
   span {
     @include md-title;
     color: $beige;
+    text-shadow: 0px 5px 5px rgba(52, 55, 59, 0.32);
   }
 }
 
@@ -364,7 +365,7 @@
 .product-card {
   cursor: pointer;
   display: grid;
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-rows: 15rem 1fr;
   width: 25rem;
   height: 27rem;
   // background-color: greenyellow;
@@ -380,12 +381,17 @@
     position: relative;
 
     &__photo {
-      img {
-        max-height: 100%;
-        max-width: 100%;
-        object-fit: cover;
-        overflow: hidden;
-      }
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
+      height: 100%;
+      // img {
+      //   display: block;
+      //   max-height: 100%;
+      //   max-width: 100%;
+      //   object-fit: cover;
+      //   overflow: hidden;
+      // }
     }
 
     &__heart {
