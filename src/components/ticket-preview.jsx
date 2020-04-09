@@ -15,10 +15,9 @@ const TicketPreview = ({ ticket }) => {
         </div>
       </header>
       <div className="ticket-preview__list">
-        <ProductCard data={ticket[0]} />
-        <ProductCard data={ticket[1]} />
-        <ProductCard data={ticket[2]} />
-        <ProductCard data={ticket[3]} />
+        {ticket.map(ticket => (
+          <ProductCard key={ticket.id} data={ticket} />
+        ))}
       </div>
     </div>
   );

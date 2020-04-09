@@ -3,14 +3,30 @@ import React from "react";
 import "../scss/styles.scss";
 import LikedProducts from "./likedProducts";
 import ReviewForm from "./review-form";
+import OrderedList from "./ordered-list";
 
 const DashBoard = props => {
   const [menu, setMenu] = React.useState("default");
+  const [point, setPoint] = React.useState(0);
+
+  React.useEffect(() => {
+    // 리뷰 작성해야할 개수 불러오기 (isComplete === false인 데이터 개수)
+    // API.getReviewNum(customer_id)
+
+    // 유저의 포인트 불러오기
+    setPoint(10);
+  }, []);
 
   const renderMain = menu => {
     switch (menu) {
+      case "orders":
+        return <OrderedList />;
       case "review":
         return <ReviewForm />;
+      case "likes":
+        return <LikedProducts />;
+      case "setting":
+        return;
       default:
         return (
           <>
@@ -22,7 +38,16 @@ const DashBoard = props => {
                 </button>
               </div>
             </div>
-            <LikedProducts />
+            <div className="liked-sample">
+              <LikedProducts />
+              <button
+                className="liked-product__fullRender-btn"
+                onClick={() => setMenu("likes")}
+              >
+                더보기
+              </button>
+              {/* 찜목록에서 세개만! 불러오고 더보기 버튼 */}
+            </div>
           </>
         );
     }
@@ -32,19 +57,24 @@ const DashBoard = props => {
     <div className="user-dashboard">
       <aside className="user-dashboard-side">
         <div className="user-profile">
-          <div className="user-profile__pic"></div>
+          <div
+            className="user-profile__pic"
+            style={{
+              backgroundImage: `url("/img/porto.jpg")`
+            }}
+          ></div>
           <div className="user-profile__name">Minha Koo</div>
         </div>
         <div className="user-point">
-          <span>130</span> 포인트
+          <span>{point}</span> 포인트
         </div>
         <div className="user-menu">
           <ul>
             <li onClick={() => setMenu("default")}>대시보드</li>
-            <li>구매내역</li>
-            <li>찜 목록</li>
+            <li onClick={() => setMenu("orders")}>예약내역</li>
+            <li onClick={() => setMenu("likes")}>찜 목록</li>
             <li onClick={() => setMenu("review")}>리뷰작성</li>
-            <li>계정설정</li>
+            <li onClick={() => setMenu("setting")}>계정설정</li>
           </ul>
         </div>
       </aside>

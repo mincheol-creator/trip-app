@@ -1,12 +1,19 @@
 import React from "react";
+import API from "../API";
 
 const ProductCard = ({ data }) => {
   const [liked, setLiked] = React.useState(false);
 
+  React.useEffect(() => {
+    // DB에서 liked 된건지 아닌지 체크해서 하트 색 변경
+    // if (true) {
+    //   setLiked(true);
+    // }
+  }, []);
+
   const handleClick = () => {
     window.location.href = `/product/${data.id}`;
   };
-  // console.log(data);
 
   const currencyFormat = num => {
     return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
@@ -14,16 +21,20 @@ const ProductCard = ({ data }) => {
 
   const addToLikes = event => {
     event.stopPropagation();
-    // window.location.href = `/user/likes`;
+    // DB의 해당 유저 liked 목록 비교해서 추가됐다면 그냥 냅두고 목록에 없으면 추가
+    API.addLikes(data.id);
     setLiked(!liked);
   };
 
   return (
     <div className="product-card" onClick={handleClick}>
       <div className="product-card-top">
-        <div className="product-card-top__photo">
-          <img src={data.photo} alt="Tour" />
-        </div>
+        <div
+          className="product-card-top__photo"
+          style={{
+            backgroundImage: `url("http://${process.env.REACT_APP_SERVER_URL}/image/${data.photo}")`
+          }}
+        ></div>
         <div className="product-card-top__heart">
           {liked ? (
             <>
@@ -31,7 +42,7 @@ const ProductCard = ({ data }) => {
                 id="color"
                 className="product-card-top__heart-red"
                 onClick={addToLikes}
-                enable-background="new 0 0 24 24"
+                enableBackground="new 0 0 24 24"
                 height="20"
                 viewBox="0 0 24 24"
                 width="20"
@@ -68,7 +79,7 @@ const ProductCard = ({ data }) => {
           <span className="reviews">(200개의 후기)</span>
         </div>
         <div className="product-card-bottom__price">
-          {/* currencyFormat */ data.adult_price}원 / 1인
+          {currencyFormat(data.adult_price)}원 / 1인
         </div>
       </div>
     </div>

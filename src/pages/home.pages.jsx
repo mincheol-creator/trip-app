@@ -15,43 +15,28 @@ class HomePage extends React.Component {
   constructor() {
     super();
     this.state = {
-      city: [],
+      city: null,
       tour: null,
       ticket: null,
     };
   }
 
   async componentDidMount() {
-    await API.getTourPreview().then((response) => {
-      console.log(response);
-      //const tourTour = response.data.message;
-      /*  const tourList = tourTour.map((item,i)=>{
-        return(
-          id: 3,
-          name: {item.name}
-        );
-      }) */
-
+    await API.getCityPreview().then((response) => {
       this.setState({
-        /*  city: response.data.city, */
+        city: response.data.message,
+      });
+    });
+
+    await API.getTourPreview().then((response) => {
+      this.setState({
         tour: response.data.message,
-        /* ticket: response.data.ticket, */
       });
     });
 
     await API.getTicketPreview().then((response) => {
-      //const tourTour = response.data.message;
-      /*  const tourList = tourTour.map((item,i)=>{
-        return(
-          id: 3,
-          name: {item.name}
-        );
-      }) */
-
       this.setState({
-        /*  city: response.data.city, */
         ticket: response.data.message,
-        /* ticket: response.data.ticket, */
       });
     });
   }
@@ -63,7 +48,7 @@ class HomePage extends React.Component {
           <Header />
           <Search />
         </div>
-        {this.state.tour && this.state.ticket ? (
+        {this.state.city && this.state.tour && this.state.ticket ? (
           <>
             <CityPreview city={this.state.city} />
             <TourPreview tour={this.state.tour} />

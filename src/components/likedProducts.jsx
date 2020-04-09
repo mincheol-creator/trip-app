@@ -24,6 +24,7 @@ const LikedProducts = props => {
   // dashboard에서 랜더링할때는 3~4개까지만 보여주고 더보기 ㄱ
 
   React.useEffect(() => {
+    // 유저의 데이터 불러와서 랜더링!
     if (!props.customer.isLoggedIn) {
       alert("로그인 해주세요.");
       window.location.href = "/user/signup";

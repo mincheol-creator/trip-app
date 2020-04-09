@@ -28,6 +28,10 @@ const getCustomer = (email, password) => {
   });
 };
 
+const getCityPreview = () => {
+  return axios.post(`http://${url}/product/getCityPreview`, {});
+};
+
 const getTourPreview = () => {
   return axios.post(`http://${url}/product/getTourPreview`, {});
 };
@@ -36,13 +40,19 @@ const getTicketPreview = () => {
   return axios.post(`http://${url}/product/getTicketPreview`, {});
 };
 
+const getCityDetailPreview = (sendCityName) => {
+  return axios.post(`http://${url}/product/getCityDetailPreview`, {
+    sendCityName,
+  });
+};
+
 const getPreview = () => {
   return axios.post(`http://${url}/product/getProductPreview`, {});
 };
 
-const selectProduct = (id) => {
-  return axios.post(`http://${url}/product/getProduct`, {
-    id,
+const selectProduct = (sendProductID) => {
+  return axios.post(`http://${url}/product/selectProduct`, {
+    sendProductID,
   });
 };
 /*
@@ -59,9 +69,12 @@ const getKakaoLogin = () => {
 
 const getKakaoLogout = () => {};
 
-const kakaopayPurchase = (send_param) => {
+const kakaopayPurchase = (name, total_amount) => {
   //window.location.href = `http://${url}/kakao/pay`;
-
+  const send_param = {
+    name,
+    total_amount,
+  };
   return axios
     .post(`http://${url}/kakao/pay`, send_param)
     .then((response) => {
@@ -72,12 +85,35 @@ const kakaopayPurchase = (send_param) => {
     });
 };
 
+/*
+ * Userpage
+ */
+const addReview = (pId, star, content) => {
+  return axios.post(`http://${url}/product/createReview`, {
+    product_id: pId,
+    star,
+    content,
+  });
+};
+
+const addLikes = (pId) => {
+  alert("liked 목록에 추가!");
+  // return axios.post(`http://${url}/likes/createLikes`, {
+  //   product_id: pId
+  // });
+};
+
 export default {
   addCustomer,
   getCustomer,
   getTourPreview,
   getTicketPreview,
+  getCityPreview,
   getKakaoLogin,
   getKakaoLogout,
+  getCityDetailPreview,
   kakaopayPurchase,
+  addReview,
+  selectProduct,
+  addLikes,
 };

@@ -193,6 +193,7 @@
   span {
     @include md-title;
     color: $beige;
+    text-shadow: 0px 5px 5px rgba(52, 55, 59, 0.32);
   }
 }
 
@@ -236,6 +237,17 @@
       &-header {
         @include sm-title;
       }
+      #option-date {
+        display: block;
+      }
+      input {
+        display: inline-block;
+      }
+      .adult-quantity,
+      .youth-quantity {
+        display: inline-block;
+        font-size: 1.5rem;
+      }
     }
 
     &__desc {
@@ -270,9 +282,10 @@
   &-side {
     text-align: center;
     box-shadow: 0 2px 5px rgba(129, 138, 148, 0.32);
-    height: 20rem;
+    height: 30rem;
     margin-top: 3rem;
     padding: 1rem;
+    font-size: 1.2rem;
 
     position: sticky;
     top: 3rem;
@@ -286,6 +299,11 @@
         @include main-button;
         margin: 1rem auto;
       }
+    }
+
+    &__totalPrice {
+      font-size: 1.5rem;
+      font-weight: 600;
     }
   }
 }
@@ -320,8 +338,11 @@
     text-align: center;
 
     &__name {
+      color: $beige;
+      text-shadow: 5px 5px 5px rgba(18, 19, 20, 0.32);
       &-main {
         font-size: 4rem;
+        font-weight: 600;
       }
 
       &-sub {
@@ -364,7 +385,7 @@
 .product-card {
   cursor: pointer;
   display: grid;
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-rows: 15rem 1fr;
   width: 25rem;
   height: 27rem;
   // background-color: greenyellow;
@@ -380,12 +401,17 @@
     position: relative;
 
     &__photo {
-      img {
-        max-height: 100%;
-        max-width: 100%;
-        object-fit: cover;
-        overflow: hidden;
-      }
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
+      height: 100%;
+      // img {
+      //   display: block;
+      //   max-height: 100%;
+      //   max-width: 100%;
+      //   object-fit: cover;
+      //   overflow: hidden;
+      // }
     }
 
     &__heart {
@@ -506,8 +532,9 @@
 }
 
 .user-dashboard {
+  width: 100%;
   display: grid;
-  grid-template-columns: 30rem 1fr;
+  grid-template-columns: 30rem 100rem;
 
   &-side {
     display: grid;
@@ -538,9 +565,6 @@
     }
 
     .user-point {
-      // display: flex;
-      // justify-content: center;
-      // align-content: center;
       padding: 1rem;
       margin: auto 0;
       border-bottom: 1px solid $beige;
@@ -593,19 +617,118 @@
         }
       }
     }
+    .liked-sample {
+      // display: flex;
+      // justify-content: center;
+      .liked-product__fullRender-btn {
+        display: inline-block;
+        @include sub-button;
+        width: 50rem;
+        margin: 0 auto;
+      }
+    }
   }
 }
 
-.review-textarea {
-  display: block;
-  width: 100%;
-  height: 10rem;
-  border: 1px solid $beige;
-  border-radius: 2px;
-  padding: 1rem;
-  line-height: 1.5;
-  font-size: 1.5rem;
-  resize: none;
+.review {
+  padding: 1rem 3rem;
+
+  header {
+    @include lg-title;
+    // border-left: 10px solid $blue;
+    // padding-left: 5px;
+    margin: 3rem 0;
+  }
+
+  .review {
+    header {
+      @include md-title;
+    }
+  }
+
+  .review-form-container {
+    .review-form {
+      label {
+        display: block;
+        @include sm-title;
+        font-weight: 400;
+        border-left: 7px solid $blue;
+        padding-left: 5px;
+        margin-bottom: 1rem;
+      }
+      select {
+        display: block;
+        font-size: 1.5rem;
+      }
+
+      &__textarea {
+        display: block;
+        width: 50rem;
+        height: 10rem;
+        border: 1px solid $beige;
+        border-radius: 2px;
+        padding: 1rem;
+        line-height: 1.5;
+        font-size: 1.5rem;
+        resize: none;
+      }
+
+      &__btn {
+        @include main-button;
+      }
+
+      .star {
+        margin: 0.5rem;
+      }
+
+      .review-star,
+      .review-content {
+        margin: 2rem 0;
+      }
+    }
+  }
+}
+
+.ordered-list {
+  padding: 1rem 3rem;
+
+  header {
+    @include lg-title;
+    margin: 3rem 0;
+  }
+
+  .order {
+    border: 1.5px solid $beige;
+    padding: 2rem;
+    font-size: 1.5rem;
+    // position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &-number {
+      display: inline-block;
+      @include sm-title;
+      padding-right: 2rem;
+
+      border-right: 2px solid $beige;
+    }
+
+    &-body {
+      display: inline-block;
+      padding: 0 2rem;
+    }
+
+    &-button {
+      @include sub-button;
+      width: 10rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 2rem;
+      border-left: 2px solid $beige;
+    }
+  }
 }
 
 /*
