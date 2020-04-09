@@ -73,6 +73,12 @@ class ProductPage extends React.Component {
       city,
       country,
     } = this.state.productData;
+
+    const send_param = {
+      name,
+      adult_price,
+    };
+
     return (
       <div className="product">
         <section className="product-main">
@@ -115,7 +121,9 @@ class ProductPage extends React.Component {
             <p>24시간 이내 확정</p>
           </div>
           <div className="product-side__buttons">
-            <button onClick={API.kakaopayPurchase}>구매하기</button>
+            <button onClick={() => API.kakaopayPurchase(send_param)}>
+              구매하기
+            </button>
             <button onClick={this.handleLikeBtn}>❤️ 찜 목록에 넣기</button>
             <div className="likes-content">50명이 찜 목록에 담았습니다</div>
           </div>
