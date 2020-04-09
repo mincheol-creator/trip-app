@@ -3,6 +3,7 @@ import React from "react";
 import "../scss/styles.scss";
 import LikedProducts from "./likedProducts";
 import ReviewForm from "./review-form";
+import OrderedList from "./ordered-list";
 
 const DashBoard = props => {
   const [menu, setMenu] = React.useState("default");
@@ -10,7 +11,7 @@ const DashBoard = props => {
   const renderMain = menu => {
     switch (menu) {
       case "orders":
-        return;
+        return <OrderedList />;
       case "review":
         return <ReviewForm />;
       case "likes":
@@ -47,7 +48,7 @@ const DashBoard = props => {
         <div className="user-menu">
           <ul>
             <li onClick={() => setMenu("default")}>대시보드</li>
-            <li onClick={() => setMenu("orders")}>구매내역</li>
+            <li onClick={() => setMenu("orders")}>예약내역</li>
             <li onClick={() => setMenu("likes")}>찜 목록</li>
             <li onClick={() => setMenu("review")}>리뷰작성</li>
             <li onClick={() => setMenu("setting")}>계정설정</li>
