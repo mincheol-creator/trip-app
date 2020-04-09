@@ -197,7 +197,9 @@ class ProductPage extends React.Component {
                     } else {
                       return API.kakaopayPurchase(
                         productData.name,
-                        this.state.totalPrice
+                        this.state.totalPrice,
+                        this.state.adultCount + this.state.youthCount,
+                        productData.id
                       );
                     }
                   }}

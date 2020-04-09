@@ -74,14 +74,16 @@ const getKakaoLogin = () => {
 
 const getKakaoLogout = () => {};
 
-const kakaopayPurchase = (name, total_amount) => {
+const kakaopayPurchase = (name, total_amount, quantity, product_id) => {
   //window.location.href = `http://${url}/kakao/pay`;
   if (total_amount > 1000000) {
     alert("100만원 초과!");
   } else {
     const send_param = {
       name,
-      total_amount
+      total_amount,
+      quantity,
+      product_id
     };
     return axios
       .post(`http://${url}/kakao/pay`, send_param)
