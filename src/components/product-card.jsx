@@ -24,7 +24,7 @@ const ProductCard = ({ data }) => {
         <div
           className="product-card-top__photo"
           style={{
-            backgroundImage: `url("http://70.12.226.41:8181/image/${data.photo}")`
+            backgroundImage: `url("http://${process.env.REACT_APP_SERVER_URL}/image/${data.photo}")`
           }}
         >
           {/* <img src={} alt="Tour" /> */}
