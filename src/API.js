@@ -1,6 +1,7 @@
 import axios from "axios";
 
-axios.defaults.withCredentials = false;
+axios.defaults.withCredentials = true;
+const headers = { withCredentials: true };
 
 // const url = process.env.REACT_APP_SERVER_URL;
 const url = "70.12.226.41:8181";
@@ -12,44 +13,48 @@ const url = "70.12.226.41:8181";
 
 const addCustomer = (email, password) => {
   return axios.post(`http://${url}/customer/signup`, {
+    headers,
     email,
-    password
+    password,
   });
 };
 
 const getCustomer = (email, password) => {
   console.log(url);
   return axios.post(`http://${url}/customer/signin`, {
+    headers,
     email,
-    password
+    password,
   });
 };
 
 const getCityPreview = () => {
-  return axios.post(`http://${url}/product/getCityPreview`, {});
+  return axios.post(`http://${url}/product/getCityPreview`, { headers });
 };
 
 const getTourPreview = () => {
-  return axios.post(`http://${url}/product/getTourPreview`, {});
+  return axios.post(`http://${url}/product/getTourPreview`, { headers });
 };
 
 const getTicketPreview = () => {
-  return axios.post(`http://${url}/product/getTicketPreview`, {});
+  return axios.post(`http://${url}/product/getTicketPreview`, { headers });
 };
 
-const getCityDetailPreview = sendCityName => {
+const getCityDetailPreview = (sendCityName) => {
   return axios.post(`http://${url}/product/getCityDetailPreview`, {
-    sendCityName
+    headers,
+    sendCityName,
   });
 };
 
 const getPreview = () => {
-  return axios.post(`http://${url}/product/getProductPreview`, {});
+  return axios.post(`http://${url}/product/getProductPreview`, { headers });
 };
 
-const selectProduct = sendProductID => {
+const selectProduct = (sendProductID) => {
   return axios.post(`http://${url}/product/selectProduct`, {
-    sendProductID
+    headers,
+    sendProductID,
   });
 };
 /*
@@ -75,9 +80,10 @@ const kakaopayPurchase = () => {
  */
 const addReview = (pId, star, content) => {
   return axios.post(`http://${url}/product/addReview`, {
+    headers,
     product_id: pId,
     star,
-    content
+    content,
   });
 };
 
@@ -92,5 +98,5 @@ export default {
   getCityDetailPreview,
   kakaopayPurchase,
   addReview,
-  selectProduct
+  selectProduct,
 };
