@@ -30,7 +30,7 @@ function App() {
     } else {
       store.dispatch(
         addCustomer({
-          isLoggedIn: false
+          isLoggedIn: true
         })
       );
     }

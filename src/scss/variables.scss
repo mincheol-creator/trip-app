@@ -71,4 +71,8 @@ $bold: "Maple-bold", sans-serif;
   font-weight: 500;
   background-color: $beige;
   cursor: pointer;
+
+  &:hover {
+    background-color: #d3d0d0;
+  }
 }
