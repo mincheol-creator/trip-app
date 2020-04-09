@@ -591,6 +591,16 @@
         }
       }
     }
+    .liked-sample {
+      // display: flex;
+      // justify-content: center;
+      .liked-product__fullRender-btn {
+        display: inline-block;
+        @include sub-button;
+        width: 50rem;
+        margin: 0 auto;
+      }
+    }
   }
 }
 

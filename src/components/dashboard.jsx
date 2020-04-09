@@ -7,6 +7,12 @@ import OrderedList from "./ordered-list";
 
 const DashBoard = props => {
   const [menu, setMenu] = React.useState("default");
+  const [point, setPoint] = React.useState(0);
+
+  React.useEffect(() => {
+    // 리뷰 작성해야할 개수 불러오기 (isComplete === false인 데이터 개수)
+    // API.getReviewNum(customer_id)
+  }, []);
 
   const renderMain = menu => {
     switch (menu) {
@@ -29,7 +35,11 @@ const DashBoard = props => {
                 </button>
               </div>
             </div>
-            <LikedProducts />
+            <div className="liked-sample">
+              <LikedProducts />
+              <button className="liked-product__fullRender-btn">더보기</button>
+              {/* 찜목록에서 세개만 불러오고 더보기 버튼 */}
+            </div>
           </>
         );
     }
@@ -43,7 +53,7 @@ const DashBoard = props => {
           <div className="user-profile__name">Minha Koo</div>
         </div>
         <div className="user-point">
-          <span>130</span> 포인트
+          <span>{point}</span> 포인트
         </div>
         <div className="user-menu">
           <ul>

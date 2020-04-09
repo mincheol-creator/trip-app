@@ -2,8 +2,6 @@ import React from "react";
 import { connect } from "react-redux";
 
 import "../scss/styles.scss";
-import DayPicker from "react-day-picker";
-import "react-day-picker/lib/style.css";
 
 import API from "../API";
 
@@ -27,32 +25,43 @@ class ProductPage extends React.Component {
         category: "tour",
         city: "London",
         country: "England",
-        createdAt: "",
-      },
+        createdAt: ""
+      }, // 화면 랜더링 될 때 배치하는 상품 정보
+      pickedDate: "", // 예약할 때 선택해야하는 옵션 날짜
+      adultCount: "", // 예약할 때 선택해야하는 성인 수
+      youthCount: "", // 예약할 때 선택해야하는 어린이 수
+      likedCount: 30 // 찜 목록에 몇개나 있는지
     };
+  }
+
+  componentDidMount() {
+    // 찜목록 DB돌고 이 상품이 찜목록에 몇개나 들어가있는지 카운트
+    //   const id = "1";
+    //   API.selectProduct(id).then(response => {
+    //     if (response.data.message) {
+    //       alert("조회 되었습니다!");
+    //       this.setState({
+    //         productData: response.data.productData
+    //       });
+    //     } else {
+    //       alert("조회 실패했습니다");
+    //     }
+    //   });
   }
 
   currencyFormat(num) {
     return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
   }
 
-  // componentDidMount() {
-  //   const id = "1";
-  //   API.selectProduct(id).then(response => {
-  //     if (response.data.message) {
-  //       alert("조회 되었습니다!");
-  //       this.setState({
-  //         productData: response.data.productData
-  //       });
-  //     } else {
-  //       alert("조회 실패했습니다");
-  //     }
-  //   });
-  // }
+  handleDateChange = e => {
+    console.log(e.target.value);
+    this.setState({
+      pickedDate: e.target.value
+    });
+  };
 
-  handleLikeBtn = (event) => {
+  handleLikeBtn = event => {
     event.preventDefault();
-
     alert(`${this.state.productData.id} 상품이 찜 목록에 추가되었습니다.`);
   };
 
@@ -71,7 +80,7 @@ class ProductPage extends React.Component {
       photo,
       category,
       city,
-      country,
+      country
     } = this.state.productData;
     return (
       <div className="product">
@@ -86,7 +95,19 @@ class ProductPage extends React.Component {
             <div className="product-main__options-header">
               날짜와 옵션을 선택하세요
             </div>
-            <DayPicker />
+            <input
+              type="date"
+              id="option-date"
+              // name="trip-start"
+              // value="2018-07-22"
+              min="2020-01-01"
+              max="2040-12-31"
+              onChange={this.handleDateChange}
+            />
+            <label htmlFor="">성인</label>
+            <input type="number" name="" id="" />
+            <label htmlFor="">어린이</label>
+            <input type="number" name="" id="" />
           </div>
 
           <div className="product-main__desc">
@@ -117,7 +138,9 @@ class ProductPage extends React.Component {
           <div className="product-side__buttons">
             <button onClick={API.kakaopayPurchase}>구매하기</button>
             <button onClick={this.handleLikeBtn}>❤️ 찜 목록에 넣기</button>
-            <div className="likes-content">50명이 찜 목록에 담았습니다</div>
+            <div className="likes-content">
+              <span>{this.state.likedCount}</span>명이 찜 목록에 담았습니다
+            </div>
           </div>
         </aside>
       </div>
@@ -125,7 +148,7 @@ class ProductPage extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return state;
 };
 
