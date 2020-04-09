@@ -2,7 +2,7 @@ import React from "react";
 
 import "../scss/styles.scss";
 
-const CityButton = props => {
+const CityButton = (props) => {
   console.log(props);
   const handleClick = () => {
     console.log(window.location.href);
@@ -14,7 +14,7 @@ const CityButton = props => {
       className="city-button"
       onClick={handleClick}
       style={{
-        backgroundImage: `url("http://${process.env.REACT_APP_SERVER_URL}/image/${props.data.image}")`
+        backgroundImage: `url("http://${process.env.REACT_APP_SERVER_URL}/image/${props.data.image}")`,
       }}
     >
       <span className="city-button__name">{props.data.name_kor}</span>

@@ -9,7 +9,8 @@ class ProductPage extends React.Component {
   constructor() {
     super();
     this.state = {
-      productData: {
+      productID: window.location.pathname.split("/")[2],
+      productData: null /* {
         id: 3,
         name: "런던 시내 워킹 투어",
         description:
@@ -25,48 +26,45 @@ class ProductPage extends React.Component {
         category: "tour",
         city: "London",
         country: "England",
-        createdAt: ""
-      }, // 화면 랜더링 될 때 배치하는 상품 정보
+        createdAt: "",
+      },  */, // 화면 랜더링 될 때 배치하는 상품 정보
       pickedDate: "", // 예약할 때 선택해야하는 옵션 날짜
       adultCount: "", // 예약할 때 선택해야하는 성인 수
       youthCount: "", // 예약할 때 선택해야하는 어린이 수
-      likedCount: 30 // 찜 목록에 몇개나 있는지
+      likedCount: 30, // 찜 목록에 몇개나 있는지
     };
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     // 찜목록 DB돌고 이 상품이 찜목록에 몇개나 들어가있는지 카운트
-    //   const id = "1";
-    //   API.selectProduct(id).then(response => {
-    //     if (response.data.message) {
-    //       alert("조회 되었습니다!");
-    //       this.setState({
-    //         productData: response.data.productData
-    //       });
-    //     } else {
-    //       alert("조회 실패했습니다");
-    //     }
-    //   });
+    let sendProductID = this.state.productID;
+    console.log(sendProductID);
+    await API.selectProduct(sendProductID).then((response) => {
+      console.log(response.data.Message);
+      this.setState({
+        productData: response.data.Message,
+      });
+    });
   }
 
   currencyFormat(num) {
     return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
   }
 
-  handleDateChange = e => {
+  handleDateChange = (e) => {
     console.log(e.target.value);
     this.setState({
-      pickedDate: e.target.value
+      pickedDate: e.target.value,
     });
   };
 
-  handleLikeBtn = event => {
+  handleLikeBtn = (event) => {
     event.preventDefault();
     alert(`${this.state.productData.id} 상품이 찜 목록에 추가되었습니다.`);
   };
 
   render() {
-    const {
+    /* const {
       id,
       name,
       description,
@@ -80,75 +78,88 @@ class ProductPage extends React.Component {
       photo,
       category,
       city,
-      country
-    } = this.state.productData;
+      country,
+    } = this.state.productData; */
+    const productData = this.state.productData;
+    console.log(productData);
     return (
       <div className="product">
-        <section className="product-main">
-          <header className="product-main__title">🇬🇧 {name}</header>
+        {this.state.productData ? (
+          <>
+            <section className="product-main">
+              <header className="product-main__title">
+                🇬🇧 {productData.name}
+              </header>
 
-          <div className="product-main__picture">
-            <img src={photo} alt={name} />
-          </div>
+              <div className="product-main__picture">
+                <img
+                  src={`http://${process.env.REACT_APP_SERVER_URL}/image/${productData.photo}`}
+                  alt={productData.name}
+                />
+              </div>
 
-          <div className="product-main__options">
-            <div className="product-main__options-header">
-              날짜와 옵션을 선택하세요
-            </div>
-            <input
-              type="date"
-              id="option-date"
-              // name="trip-start"
-              // value="2018-07-22"
-              min="2020-01-01"
-              max="2040-12-31"
-              onChange={this.handleDateChange}
-            />
-            <label htmlFor="">성인</label>
-            <input type="number" name="" id="" />
-            <label htmlFor="">어린이</label>
-            <input type="number" name="" id="" />
-          </div>
+              <div className="product-main__options">
+                <div className="product-main__options-header">
+                  날짜와 옵션을 선택하세요
+                </div>
+                <input
+                  type="date"
+                  id="option-date"
+                  // name="trip-start"
+                  // value="2018-07-22"
+                  min="2020-01-01"
+                  max="2040-12-31"
+                  onChange={this.handleDateChange}
+                />
+                <label htmlFor="">성인</label>
+                <input type="number" name="" id="" />
+                <label htmlFor="">어린이</label>
+                <input type="number" name="" id="" />
+              </div>
 
-          <div className="product-main__desc">
-            <div className="product-main__desc-header">투어 소개</div>
-            <div> {description}</div>
-          </div>
+              <div className="product-main__desc">
+                <div className="product-main__desc-header">투어 소개</div>
+                <div> {productData.description}</div>
+              </div>
 
-          <div className="product-main__meeting-location">
-            <div className="product-main__meeting-location-header">
-              만나는 장소
-            </div>
-            <div>{location}</div>
-          </div>
+              <div className="product-main__meeting-location">
+                <div className="product-main__meeting-location-header">
+                  만나는 장소
+                </div>
+                <div>{productData.location}</div>
+              </div>
 
-          <div className="product-main__meeting-time">
-            <div className="product-main__meeting-time-header">만나는 시간</div>
-          </div>
-        </section>
+              <div className="product-main__meeting-time">
+                <div className="product-main__meeting-time-header">
+                  만나는 시간
+                </div>
+              </div>
+            </section>
 
-        <aside className="product-side">
-          <div className="product-side__price">
-            {this.currencyFormat(adult_price)}원
-          </div>
-          <div className="product-side__info">
-            <p>예약 가능한 가장 빠른 날짜: 2020년 4월 9일</p>
-            <p>24시간 이내 확정</p>
-          </div>
-          <div className="product-side__buttons">
-            <button onClick={API.kakaopayPurchase}>구매하기</button>
-            <button onClick={this.handleLikeBtn}>❤️ 찜 목록에 넣기</button>
-            <div className="likes-content">
-              <span>{this.state.likedCount}</span>명이 찜 목록에 담았습니다
-            </div>
-          </div>
-        </aside>
+            <aside className="product-side">
+              <div className="product-side__price">
+                {this.currencyFormat(productData.adult_price)}원
+              </div>
+              <div className="product-side__info">
+                <p>예약 가능한 가장 빠른 날짜: 2020년 4월 9일</p>
+                <p>24시간 이내 확정</p>
+              </div>
+              <div className="product-side__buttons">
+                <button onClick={API.kakaopayPurchase}>구매하기</button>
+                <button onClick={this.handleLikeBtn}>❤️ 찜 목록에 넣기</button>
+                <div className="likes-content">
+                  <span>{this.state.likedCount}</span>명이 찜 목록에 담았습니다
+                </div>
+              </div>
+            </aside>
+          </>
+        ) : null}
       </div>
     );
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return state;
 };
 
