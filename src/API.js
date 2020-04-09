@@ -3,8 +3,8 @@ import axios from "axios";
 axios.defaults.withCredentials = true;
 
 // const url = process.env.REACT_APP_SERVER_URL;
-// const url = "70.12.226.41:8181";
-const url = "70.12.227.32:8181"; // 멀캠 지환
+const url = "70.12.226.41:8181";
+// const url = "70.12.227.32:8181"; // 멀캠 지환
 // const url = "172.30.1.9:8181"; // 시우형네
 
 const API_KEY = process.env.REACT_APP_KAKAO_KEY;
@@ -16,7 +16,7 @@ const API_KEY = process.env.REACT_APP_KAKAO_KEY;
 const addCustomer = (email, password) => {
   return axios.post(`http://${url}/customer/signup`, {
     email,
-    password,
+    password
   });
 };
 
@@ -24,7 +24,7 @@ const getCustomer = (email, password) => {
   console.log(url);
   return axios.post(`http://${url}/customer/signin`, {
     email,
-    password,
+    password
   });
 };
 
@@ -40,9 +40,9 @@ const getTicketPreview = () => {
   return axios.post(`http://${url}/product/getTicketPreview`, {});
 };
 
-const getCityDetailPreview = (sendCityName) => {
+const getCityDetailPreview = sendCityName => {
   return axios.post(`http://${url}/product/getCityDetailPreview`, {
-    sendCityName,
+    sendCityName
   });
 };
 
@@ -50,9 +50,9 @@ const getPreview = () => {
   return axios.post(`http://${url}/product/getProductPreview`, {});
 };
 
-const selectProduct = (sendProductID) => {
+const selectProduct = sendProductID => {
   return axios.post(`http://${url}/product/selectProduct`, {
-    sendProductID,
+    sendProductID
   });
 };
 /*
@@ -71,18 +71,22 @@ const getKakaoLogout = () => {};
 
 const kakaopayPurchase = (name, total_amount) => {
   //window.location.href = `http://${url}/kakao/pay`;
-  const send_param = {
-    name,
-    total_amount,
-  };
-  return axios
-    .post(`http://${url}/kakao/pay`, send_param)
-    .then((response) => {
-      window.location.href = response.data.message;
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  if (total_amount > 1000000) {
+    alert("100만원 초과!");
+  } else {
+    const send_param = {
+      name,
+      total_amount
+    };
+    return axios
+      .post(`http://${url}/kakao/pay`, send_param)
+      .then(response => {
+        window.location.href = response.data.message;
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
 };
 
 /*
@@ -92,11 +96,11 @@ const addReview = (pId, star, content) => {
   return axios.post(`http://${url}/product/createReview`, {
     product_id: pId,
     star,
-    content,
+    content
   });
 };
 
-const addLikes = (pId) => {
+const addLikes = pId => {
   alert("liked 목록에 추가!");
   // return axios.post(`http://${url}/likes/createLikes`, {
   //   product_id: pId
@@ -115,5 +119,5 @@ export default {
   kakaopayPurchase,
   addReview,
   selectProduct,
-  addLikes,
+  addLikes
 };
