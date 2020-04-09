@@ -65,7 +65,7 @@ class ProductPage extends React.Component {
 
   handleLikeBtn = (event) => {
     event.preventDefault();
-    alert(`${this.state.productData.id} 상품이 찜 목록에 추가되었습니다.`);
+    API.addLikes(this.state.productData.id);
   };
 
   handleQuantityChange = () => {
@@ -116,7 +116,9 @@ class ProductPage extends React.Component {
                   type="number"
                   name=""
                   id="adult-quantity-input"
+                  min="0"
                   value={this.state.adultCount}
+                  ref={(ref) => (this._adultInput = ref)}
                   onChange={(e) =>
                     this.setState({ adultCount: e.target.value }, () =>
                       this.handleQuantityChange()
@@ -140,6 +142,7 @@ class ProductPage extends React.Component {
                   name=""
                   id="youth-quantity-input"
                   value={this.state.youthCount}
+                  min="0"
                   onChange={(e) =>
                     this.setState({ youthCount: e.target.value }, () =>
                       this.handleQuantityChange()
@@ -188,12 +191,18 @@ class ProductPage extends React.Component {
               </div>
               <div className="product-side__buttons">
                 <button
-                  onClick={() =>
-                    API.kakaopayPurchase(
-                      productData.name,
-                      this.state.totalPrice
-                    )
-                  }
+                  onClick={() => {
+                    if (this.state.totalPrice === 0) {
+                      this._adultInput.focus();
+                    } else {
+                      return API.kakaopayPurchase(
+                        productData.name,
+                        this.state.totalPrice,
+                        this.state.adultCount * 1 + this.state.youthCount * 1,
+                        productData.id
+                      );
+                    }
+                  }}
                 >
                   구매하기
                 </button>

@@ -74,21 +74,26 @@ const getKakaoLogin = () => {
 
 const getKakaoLogout = () => {};
 
-const kakaopayPurchase = (name, total_amount) => {
+const kakaopayPurchase = (name, total_amount, quantity, product_id) => {
   //window.location.href = `http://${url}/kakao/pay`;
-  const send_param = {
-    headers,
-    name,
-    total_amount,
-  };
-  return axios
-    .post(`http://${url}/kakao/pay`, send_param)
-    .then((response) => {
-      window.location.href = response.data.message;
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  if (total_amount > 1000000) {
+    alert("100만원 초과!");
+  } else {
+    const send_param = {
+      name,
+      total_amount,
+      quantity,
+      product_id,
+    };
+    return axios
+      .post(`http://${url}/kakao/pay`, send_param)
+      .then((response) => {
+        window.location.href = response.data.message;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 };
 
 /*
@@ -102,6 +107,7 @@ const addReview = (pId, star, content) => {
   });
 };
 
+// 찜 목록에 추가
 const addLikes = (pId) => {
   alert("liked 목록에 추가!");
   // return axios.post(`http://${url}/likes/createLikes`, {
