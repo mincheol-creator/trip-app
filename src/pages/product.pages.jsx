@@ -29,9 +29,10 @@ class ProductPage extends React.Component {
         createdAt: "",
       },  */, // 화면 랜더링 될 때 배치하는 상품 정보
       pickedDate: "", // 예약할 때 선택해야하는 옵션 날짜
-      adultCount: "", // 예약할 때 선택해야하는 성인 수
-      youthCount: "", // 예약할 때 선택해야하는 어린이 수
+      adultCount: 0, // 예약할 때 선택해야하는 성인 수
+      youthCount: 0, // 예약할 때 선택해야하는 어린이 수
       likedCount: 30, // 찜 목록에 몇개나 있는지
+      totalPrice: 0,
     };
   }
 
@@ -51,6 +52,10 @@ class ProductPage extends React.Component {
     return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
   }
 
+  priceCalculate(quantity, price) {
+    return quantity * 1 * (price * 1);
+  }
+
   handleDateChange = (e) => {
     console.log(e.target.value);
     this.setState({
@@ -63,25 +68,22 @@ class ProductPage extends React.Component {
     alert(`${this.state.productData.id} 상품이 찜 목록에 추가되었습니다.`);
   };
 
+  handleQuantityChange = () => {
+    const totalPrice =
+      this.priceCalculate(
+        this.state.adultCount,
+        this.state.productData.adult_price
+      ) +
+      this.priceCalculate(
+        this.state.youthCount,
+        this.state.productData.youth_price
+      );
+    this.setState({ totalPrice });
+  };
+
   render() {
-    /* const {
-      id,
-      name,
-      description,
-      start_date,
-      end_date,
-      available_start_date,
-      available_end_date,
-      adult_price,
-      youth_price,
-      location,
-      photo,
-      category,
-      city,
-      country,
-    } = this.state.productData; */
     const productData = this.state.productData;
-    console.log(productData);
+
     return (
       <div className="product">
         {this.state.productData ? (
@@ -105,16 +107,53 @@ class ProductPage extends React.Component {
                 <input
                   type="date"
                   id="option-date"
-                  // name="trip-start"
-                  // value="2018-07-22"
                   min="2020-01-01"
                   max="2040-12-31"
                   onChange={this.handleDateChange}
                 />
                 <label htmlFor="">성인</label>
-                <input type="number" name="" id="" />
+                <input
+                  type="number"
+                  name=""
+                  id="adult-quantity-input"
+                  value={this.state.adultCount}
+                  onChange={(e) =>
+                    this.setState({ adultCount: e.target.value }, () =>
+                      this.handleQuantityChange()
+                    )
+                  }
+                />
+                <div className="adult-quantity">
+                  {this.currencyFormat(
+                    this.priceCalculate(
+                      this.state.adultCount,
+                      this.state.productData.adult_price
+                    )
+                  )}
+                </div>
+
+                <br></br>
+
                 <label htmlFor="">어린이</label>
-                <input type="number" name="" id="" />
+                <input
+                  type="number"
+                  name=""
+                  id="youth-quantity-input"
+                  value={this.state.youthCount}
+                  onChange={(e) =>
+                    this.setState({ youthCount: e.target.value }, () =>
+                      this.handleQuantityChange()
+                    )
+                  }
+                />
+                <div className="youth-quantity">
+                  {this.currencyFormat(
+                    this.priceCalculate(
+                      this.state.youthCount,
+                      this.state.productData.youth_price
+                    )
+                  )}
+                </div>
               </div>
 
               <div className="product-main__desc">
@@ -144,8 +183,20 @@ class ProductPage extends React.Component {
                 <p>예약 가능한 가장 빠른 날짜: 2020년 4월 9일</p>
                 <p>24시간 이내 확정</p>
               </div>
+              <div className="product-side__totalPrice">
+                총 금액 : {this.currencyFormat(this.state.totalPrice)}원
+              </div>
               <div className="product-side__buttons">
-                <button onClick={API.kakaopayPurchase}>구매하기</button>
+                <button
+                  onClick={() =>
+                    API.kakaopayPurchase(
+                      productData.name,
+                      this.state.totalPrice
+                    )
+                  }
+                >
+                  구매하기
+                </button>
                 <button onClick={this.handleLikeBtn}>❤️ 찜 목록에 넣기</button>
                 <div className="likes-content">
                   <span>{this.state.likedCount}</span>명이 찜 목록에 담았습니다

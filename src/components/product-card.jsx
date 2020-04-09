@@ -1,13 +1,14 @@
 import React from "react";
+import API from "../API";
 
 const ProductCard = ({ data }) => {
   const [liked, setLiked] = React.useState(false);
 
   React.useEffect(() => {
     // DB에서 liked 된건지 아닌지 체크해서 하트 색 변경
-    if (true) {
-      setLiked(true);
-    }
+    // if (true) {
+    //   setLiked(true);
+    // }
   }, []);
 
   const handleClick = () => {
@@ -21,6 +22,7 @@ const ProductCard = ({ data }) => {
   const addToLikes = event => {
     event.stopPropagation();
     // DB의 해당 유저 liked 목록 비교해서 추가됐다면 그냥 냅두고 목록에 없으면 추가
+    API.addLikes(data.id);
     setLiked(!liked);
   };
 
