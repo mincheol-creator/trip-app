@@ -1,6 +1,7 @@
 import axios from "axios";
 
 axios.defaults.withCredentials = true;
+const headers = { withCredentials: true };
 
 // const url = process.env.REACT_APP_SERVER_URL;
 const url = "70.12.226.41:8181";
@@ -15,6 +16,7 @@ const API_KEY = process.env.REACT_APP_KAKAO_KEY;
 
 const addCustomer = (email, password) => {
   return axios.post(`http://${url}/customer/signup`, {
+    headers,
     email,
     password
   });
@@ -23,35 +25,38 @@ const addCustomer = (email, password) => {
 const getCustomer = (email, password) => {
   console.log(url);
   return axios.post(`http://${url}/customer/signin`, {
+    headers,
     email,
     password
   });
 };
 
 const getCityPreview = () => {
-  return axios.post(`http://${url}/product/getCityPreview`, {});
+  return axios.post(`http://${url}/product/getCityPreview`, { headers });
 };
 
 const getTourPreview = () => {
-  return axios.post(`http://${url}/product/getTourPreview`, {});
+  return axios.post(`http://${url}/product/getTourPreview`, { headers });
 };
 
 const getTicketPreview = () => {
-  return axios.post(`http://${url}/product/getTicketPreview`, {});
+  return axios.post(`http://${url}/product/getTicketPreview`, { headers });
 };
 
 const getCityDetailPreview = sendCityName => {
   return axios.post(`http://${url}/product/getCityDetailPreview`, {
+    headers,
     sendCityName
   });
 };
 
 const getPreview = () => {
-  return axios.post(`http://${url}/product/getProductPreview`, {});
+  return axios.post(`http://${url}/product/getProductPreview`, { headers });
 };
 
 const selectProduct = sendProductID => {
   return axios.post(`http://${url}/product/selectProduct`, {
+    headers,
     sendProductID
   });
 };
