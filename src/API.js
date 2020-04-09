@@ -66,7 +66,7 @@ const getKakaoLogin = () => {
 
 const getKakaoLogout = () => {};
 
-const kakaopayPurchase = () => {
+const kakaopayPurchase = total_price => {
   window.location.href = `http://${url}/kakao/pay`;
 };
 
@@ -74,11 +74,18 @@ const kakaopayPurchase = () => {
  * Userpage
  */
 const addReview = (pId, star, content) => {
-  return axios.post(`http://${url}/product/addReview`, {
+  return axios.post(`http://${url}/product/createReview`, {
     product_id: pId,
     star,
     content
   });
+};
+
+const addLikes = pId => {
+  alert("liked 목록에 추가!");
+  // return axios.post(`http://${url}/likes/createLikes`, {
+  //   product_id: pId
+  // });
 };
 
 export default {
@@ -92,5 +99,6 @@ export default {
   getCityDetailPreview,
   kakaopayPurchase,
   addReview,
-  selectProduct
+  selectProduct,
+  addLikes
 };
