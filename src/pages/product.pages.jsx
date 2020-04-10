@@ -103,7 +103,7 @@ class ProductPage extends React.Component {
 
               <div className="product-main__picture">
                 <img
-                  src={`http://${process.env.REACT_APP_SERVER_URL}/image/${productData.photo}`}
+                  src={`http://70.12.227.32:8181/image/${productData.photo}`}
                   alt={productData.name}
                 />
               </div>

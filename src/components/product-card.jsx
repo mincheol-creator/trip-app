@@ -15,11 +15,11 @@ const ProductCard = ({ data, isLiked }) => {
     window.location.href = `/product/${data.id}`;
   };
 
-  const currencyFormat = num => {
+  const currencyFormat = (num) => {
     return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
   };
 
-  const addToLikes = event => {
+  const addToLikes = (event) => {
     event.stopPropagation();
     // DB의 해당 유저 liked 목록 비교해서 추가됐다면 그냥 냅두고 목록에 없으면 추가
     API.addLikes(data.id);
@@ -32,7 +32,7 @@ const ProductCard = ({ data, isLiked }) => {
         <div
           className="product-card-top__photo"
           style={{
-            backgroundImage: `url("http://${process.env.REACT_APP_SERVER_URL}/image/${data.photo}")`
+            backgroundImage: `url("http://70.12.227.32:8181/image/${data.photo}")`,
           }}
         ></div>
         <div className="product-card-top__heart">
