@@ -82,7 +82,7 @@ const DashBoard = props => {
                   backgroundImage: `url("/img/porto.jpg")`
                 }}
               ></div>
-              <div className="user-profile__name">Minha Koo</div>
+              <div className="user-profile__name">김메일</div>
             </div>
             <div className="user-point">
               <span>{point}</span> 포인트
