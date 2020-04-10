@@ -62,13 +62,18 @@ class ProductPage extends React.Component {
 
   handleLikeBtn = event => {
     event.preventDefault();
-    API.addLikes(this.state.productData.id).then(response => {
-      if (response.data.message) {
-        alert("찜 목록에 추가되었습니다.");
-      } else {
-        alert("찜하기 실패 ㅠㅠ");
-      }
-    });
+    if (!this.props.customer.isLoggedIn) {
+      alert("로그인 해주세요.");
+      window.location.href = "/user/signup";
+    } else {
+      API.addLikes(this.state.productData.id).then(response => {
+        if (response.data.message) {
+          alert("찜 목록에 추가되었습니다.");
+        } else {
+          alert("찜하기 실패 ㅠㅠ");
+        }
+      });
+    }
   };
 
   handleQuantityChange = () => {
