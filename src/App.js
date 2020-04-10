@@ -47,6 +47,12 @@ function App() {
           <Footer />
         </Route>
 
+        <Route exact path="/user/signin">
+          <Header />
+          <UserPage pathname="signup" />
+          <Footer />
+        </Route>
+
         <Route exact path="/user/likes">
           <Header />
           <UserPage pathname="likes" />
