@@ -9,8 +9,6 @@ const url = "70.12.227.32:8181"; // 멀캠 지환
 // const url = "172.30.1.9:8181"; // 시우형네
 //const url = "192.168.201.186:8181"; // 지환이네
 
-const API_KEY = process.env.REACT_APP_KAKAO_KEY;
-
 /*
  * USER
  */
@@ -24,12 +22,15 @@ const addCustomer = (email, password) => {
 };
 
 const getCustomer = (email, password) => {
-  console.log(url);
   return axios.post(`http://${url}/customer/signin`, {
     headers,
     email,
     password,
   });
+};
+
+const logout = () => {
+  return axios.post(`http://${url}/customer/logout`, {});
 };
 
 const getCityPreview = () => {
@@ -51,23 +52,12 @@ const getCityDetailPreview = (sendCityName) => {
   });
 };
 
-const getPreview = () => {
-  return axios.post(`http://${url}/product/getProductPreview`, { headers });
-};
-
 const selectProduct = (sendProductID) => {
   return axios.post(`http://${url}/product/selectProduct`, {
     headers,
     sendProductID,
   });
 };
-/*
- * CITY
- */
-
-// const getCityInfo = () => {
-//     return axios.post(url, {cityname})
-// }
 
 const getKakaoLogin = () => {
   window.location.href = `http://${url}/kakao`;
@@ -76,7 +66,6 @@ const getKakaoLogin = () => {
 const getKakaoLogout = () => {};
 
 const kakaopayPurchase = (name, total_amount, quantity, product_id) => {
-  //window.location.href = `http://${url}/kakao/pay`;
   if (total_amount > 1000000) {
     alert("100만원 초과!");
   } else {
@@ -91,33 +80,40 @@ const kakaopayPurchase = (name, total_amount, quantity, product_id) => {
       .then((response) => {
         window.location.href = response.data.message;
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      .catch((err) => {});
   }
 };
 
 /*
  * Userpage
  */
-const addReview = (pId, star, content) => {
-  return axios.post(`http://${url}/product/createReview`, {
+const addReview = (pId, star, content, order_number) => {
+  return axios.post(`http://${url}/review/createReview`, {
     product_id: pId,
     star,
     content,
+    order_number,
   });
 };
 
-const getOrderedList = () => {
-  return axios.get(``, {});
+// 구매내역에서 리뷰 안써진거 불러오기
+// const getUnwrittenReviewList = () => {
+//   return axios.post(`http://${url}/review/getUnwrittenReviews`, {});
+// };
+
+// 구매내역 불러오기
+const getOrderList = () => {
+  return axios.post(`http://${url}/order/getOrderList`, {});
 };
 
 // 찜 목록에 추가
 const addLikes = (pId) => {
-  alert("liked 목록에 추가!");
-  // return axios.post(`http://${url}/likes/createLikes`, {
-  //   product_id: pId
-  // });
+  return axios.post(`http://${url}/likes/createLikes`, {
+    product_id: pId,
+  });
+};
+const getLikes = (pId) => {
+  return axios.post(`http://${url}/likes/getLikes`, {});
 };
 
 export default {
@@ -133,4 +129,7 @@ export default {
   addReview,
   selectProduct,
   addLikes,
+  getOrderList,
+  logout,
+  getLikes,
 };

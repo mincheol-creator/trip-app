@@ -12,7 +12,6 @@ class CityPage extends React.Component {
     super();
     this.state = {
       cityName: window.location.pathname.split("/")[2],
-      // dummy data
       cityData: null,
       tourData: null,
       ticketData: null
@@ -22,9 +21,6 @@ class CityPage extends React.Component {
   async componentDidMount() {
     let sendCityName = this.state.cityName;
     await API.getCityDetailPreview(sendCityName).then(response => {
-      // console.log(response.data.cityMessage);
-      // console.log(response.data.tourMessage);
-      // console.log(response.data.ticketMessage);
       this.setState({
         cityData: response.data.cityMessage,
         tourData: response.data.tourMessage,
@@ -40,9 +36,7 @@ class CityPage extends React.Component {
     const cityData = this.state.cityData;
     const tourData = this.state.tourData;
     const ticketData = this.state.ticketData;
-    console.log(cityData);
-    console.log(tourData);
-    console.log(ticketData);
+
     return (
       <section className="city">
         {this.state.cityData && this.state.tourData && this.state.ticketData ? (

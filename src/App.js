@@ -15,7 +15,6 @@ import Cookies from "universal-cookie";
 
 import store from "../src/redux/store";
 import addCustomer from "../src/redux/customer/customer.action";
-import KaKao from "./components/kakao";
 
 const cookies = new Cookies();
 
@@ -66,7 +65,7 @@ function App() {
           <Footer />
         </Route>
 
-        <Route path="/pay/:orderNum">
+        <Route path="/pay">
           <Header />
           <PaymentPage />
           <Footer />
@@ -76,10 +75,6 @@ function App() {
           <Header />
           <CityPage />
           <Footer />
-        </Route>
-
-        <Route exact path="/oauth">
-          <KaKao />
         </Route>
       </Switch>
     </div>

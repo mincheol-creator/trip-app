@@ -6,11 +6,13 @@ import Cookies from "universal-cookie";
 
 import store from "../redux/store";
 import addCustomer from "../redux/customer/customer.action";
+import API from "../API";
 
 const cookies = new Cookies();
 
 const Header = props => {
   const handleLogout = () => {
+    API.logout();
     cookies.remove("loggedIn");
     store.dispatch(
       addCustomer({

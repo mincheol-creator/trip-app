@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import ProductCard from "./product-card";
+import API from "../API";
 
 const data = [
   // product_id로 조회한 카드 랜더링 정보
@@ -20,14 +21,20 @@ const data = [
 */
 
 const LikedProducts = props => {
-  const [page, setpage] = React.useState("Liked");
   // dashboard에서 랜더링할때는 3~4개까지만 보여주고 더보기 ㄱ
+  const [likedList, setLikedList] = React.useState([]);
 
   React.useEffect(() => {
     // 유저의 데이터 불러와서 랜더링!
     if (!props.customer.isLoggedIn) {
       alert("로그인 해주세요.");
       window.location.href = "/user/signup";
+    } else {
+      if (likedList.length < 1) {
+        API.getLikes().then(response => {
+          setLikedList(response.data);
+        });
+      }
     }
   });
 
@@ -35,9 +42,11 @@ const LikedProducts = props => {
     <div className="liked-products">
       <div className="liked-products__title">찜 목록</div>
       <div className="liked-products__list">
-        {data
-          ? data.map(productData => {
-              return <ProductCard key={data.id} data={productData} />;
+        {likedList.length > 0
+          ? likedList.map(productData => {
+              return (
+                <ProductCard key={data.id} data={productData} isLiked={true} />
+              );
             })
           : null}
       </div>
