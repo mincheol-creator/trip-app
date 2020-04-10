@@ -39,9 +39,7 @@ class ProductPage extends React.Component {
   async componentDidMount() {
     // 찜목록 DB돌고 이 상품이 찜목록에 몇개나 들어가있는지 카운트
     let sendProductID = this.state.productID;
-    console.log(sendProductID);
     await API.selectProduct(sendProductID).then(response => {
-      console.log(response.data.Message);
       this.setState({
         productData: response.data.Message
       });
@@ -57,7 +55,6 @@ class ProductPage extends React.Component {
   }
 
   handleDateChange = e => {
-    console.log(e.target.value);
     this.setState({
       pickedDate: e.target.value
     });

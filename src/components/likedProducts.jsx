@@ -44,7 +44,6 @@ const LikedProducts = props => {
       <div className="liked-products__list">
         {likedList.length > 0
           ? likedList.map(productData => {
-              console.log(likedList);
               return (
                 <ProductCard key={data.id} data={productData} isLiked={true} />
               );

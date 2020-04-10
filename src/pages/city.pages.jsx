@@ -36,9 +36,7 @@ class CityPage extends React.Component {
     const cityData = this.state.cityData;
     const tourData = this.state.tourData;
     const ticketData = this.state.ticketData;
-    console.log(cityData);
-    console.log(tourData);
-    console.log(ticketData);
+
     return (
       <section className="city">
         {this.state.cityData && this.state.tourData && this.state.ticketData ? (

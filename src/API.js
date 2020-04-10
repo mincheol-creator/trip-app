@@ -21,7 +21,6 @@ const addCustomer = (email, password) => {
 };
 
 const getCustomer = (email, password) => {
-  console.log(url);
   return axios.post(`http://${url}/customer/signin`, {
     headers,
     email,
@@ -52,23 +51,12 @@ const getCityDetailPreview = sendCityName => {
   });
 };
 
-const getPreview = () => {
-  return axios.post(`http://${url}/product/getProductPreview`, { headers });
-};
-
 const selectProduct = sendProductID => {
   return axios.post(`http://${url}/product/selectProduct`, {
     headers,
     sendProductID
   });
 };
-/*
- * CITY
- */
-
-// const getCityInfo = () => {
-//     return axios.post(url, {cityname})
-// }
 
 const getKakaoLogin = () => {
   window.location.href = `http://${url}/kakao`;
@@ -77,8 +65,6 @@ const getKakaoLogin = () => {
 const getKakaoLogout = () => {};
 
 const kakaopayPurchase = (name, total_amount, quantity, product_id) => {
-  //window.location.href = `http://${url}/kakao/pay`;
-  console.log(name, total_amount, quantity, product_id);
   if (total_amount > 1000000) {
     alert("100만원 초과!");
   } else {
@@ -93,9 +79,7 @@ const kakaopayPurchase = (name, total_amount, quantity, product_id) => {
       .then(response => {
         window.location.href = response.data.message;
       })
-      .catch(err => {
-        console.log(err);
-      });
+      .catch(err => {});
   }
 };
 

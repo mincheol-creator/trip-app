@@ -12,7 +12,6 @@ const ReviewForm = ({ data }) => {
 
   React.useEffect(() => {
     if (data.length > 1) {
-      console.log(data);
       setOptionList(data);
       setOption(data[0].orders[0].product_id);
     }
@@ -55,7 +54,6 @@ const ReviewForm = ({ data }) => {
     const order_number = data.filter(data => {
       return data.orders[0].product_id === product_id;
     })[0].orders[0].order_number;
-    console.log(product_id, star, content, order_number);
     API.addReview(product_id, star, content, order_number).then(response => {
       if (response.data.message) {
         alert("후기가 작성되었습니다!");

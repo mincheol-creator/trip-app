@@ -27,7 +27,6 @@ const SignIn = props => {
     let email = emailInput.current.value;
     let password = passwordInput.current.value;
     API.getCustomer(email, password).then(response => {
-      console.log(response);
       if (response.data.message) {
         alert("로그인에 성공했습니다.");
         store.dispatch(
