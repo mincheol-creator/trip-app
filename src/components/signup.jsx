@@ -30,6 +30,7 @@ const SignUp = props => {
         API.addCustomer(email, password).then(response => {
           if (response.data.message) {
             alert("회원가입 되었습니다!");
+            clearInput();
           } else {
             alert("회원가입에 실패했습니다");
             clearInput();
