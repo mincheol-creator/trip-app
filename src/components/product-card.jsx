@@ -1,8 +1,8 @@
 import React from "react";
 import API from "../API";
 
-const ProductCard = ({ data }) => {
-  const [liked, setLiked] = React.useState(false);
+const ProductCard = ({ data, isLiked }) => {
+  const [liked, setLiked] = React.useState(isLiked);
 
   React.useEffect(() => {
     // DB에서 liked 된건지 아닌지 체크해서 하트 색 변경

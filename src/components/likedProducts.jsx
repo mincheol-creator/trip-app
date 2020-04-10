@@ -21,7 +21,6 @@ const data = [
 */
 
 const LikedProducts = props => {
-  // const [page, setpage] = React.useState("Liked");
   // dashboard에서 랜더링할때는 3~4개까지만 보여주고 더보기 ㄱ
   const [likedList, setLikedList] = React.useState([]);
 
@@ -46,7 +45,9 @@ const LikedProducts = props => {
         {likedList.length > 0
           ? likedList.map(productData => {
               console.log(likedList);
-              return <ProductCard key={data.id} data={productData} />;
+              return (
+                <ProductCard key={data.id} data={productData} isLiked={true} />
+              );
             })
           : null}
       </div>
