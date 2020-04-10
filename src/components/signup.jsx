@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 
 import API from "../API";
+import { emailValidation, passwordValidation } from "../validation";
 
 const SignUp = props => {
   let emailInput = React.createRef();
@@ -22,16 +23,21 @@ const SignUp = props => {
     let password = passwordInput.current.value;
     let passwordConfirm = passwordConfirmInput.current.value;
     // let consent = consentInput.current.checked; // 나중에 체크
+
     if (password === passwordConfirm) {
-      // server -> db로 보냄
-      API.addCustomer(email, password).then(response => {
-        if (response.data.message) {
-          alert("회원가입 되었습니다!");
-        } else {
-          alert("회원가입에 실패했습니다");
-          clearInput();
-        }
-      });
+      if (emailValidation(email) && passwordValidation(password)) {
+        // 비밀번호 정규식 통과시 DB로 보냄
+        API.addCustomer(email, password).then(response => {
+          if (response.data.message) {
+            alert("회원가입 되었습니다!");
+          } else {
+            alert("회원가입에 실패했습니다");
+            clearInput();
+          }
+        });
+      } else {
+        alert("이메일이나 비밀번호 형식을 맞춰주세요.");
+      }
     } else {
       alert("패스워드가 일치하지 않습니다");
       clearInput();
