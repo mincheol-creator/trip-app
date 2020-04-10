@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 class PaymentPage extends React.Component {
   constructor() {
@@ -26,8 +27,12 @@ class PaymentPage extends React.Component {
           <div>정보 내용내용내용내용내용</div>
         </div>
         <div className="product-pay__buttons">
-          <button className="product-pay__buttons-home">홈으로</button>
-          <button className="product-pay__buttons-mypage">구매내역 확인</button>
+          <button className="product-pay__buttons-home">
+            <NavLink to="/">홈으로</NavLink>
+          </button>
+          <button className="product-pay__buttons-mypage">
+            <NavLink to="/user/dashboard">구매내역확인</NavLink>
+          </button>
         </div>
       </section>
     );

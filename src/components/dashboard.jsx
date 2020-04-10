@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 
 import "../scss/styles.scss";
 import LikedProducts from "./likedProducts";
@@ -13,19 +14,24 @@ const DashBoard = props => {
   const [data, setData] = React.useState([]);
 
   React.useEffect(() => {
-    // 유저 구매내역 (리뷰 작성 안된 것) 불러오기
-    if (reviewData.length < 1) {
-      API.getOrderList().then(response => {
-        const data = response.data;
-        setReviewData(
-          data.filter(data => data.orders[0].is_review_written === false)
-        );
-        setData(data);
-      });
-    }
+    if (!props.customer.isLoggedIn) {
+      alert("로그인 해주세요.");
+      window.location.href = "/user/signup";
+    } else {
+      // 유저 구매내역 (리뷰 작성 안된 것) 불러오기
+      if (reviewData.length < 1) {
+        API.getOrderList().then(response => {
+          const data = response.data;
+          setReviewData(
+            data.filter(data => data.orders[0].is_review_written === false)
+          );
+          setData(data);
+        });
+      }
 
-    // 유저의 포인트 불러오기
-    setPoint(10);
+      // 유저의 포인트 불러오기
+      setPoint(10);
+    }
   }, []);
 
   const renderMain = menu => {
@@ -66,33 +72,41 @@ const DashBoard = props => {
 
   return (
     <div className="user-dashboard">
-      <aside className="user-dashboard-side">
-        <div className="user-profile">
-          <div
-            className="user-profile__pic"
-            style={{
-              backgroundImage: `url("/img/porto.jpg")`
-            }}
-          ></div>
-          <div className="user-profile__name">Minha Koo</div>
-        </div>
-        <div className="user-point">
-          <span>{point}</span> 포인트
-        </div>
-        <div className="user-menu">
-          <ul>
-            <li onClick={() => setMenu("default")}>대시보드</li>
-            <li onClick={() => setMenu("orders")}>예약내역</li>
-            <li onClick={() => setMenu("likes")}>찜 목록</li>
-            <li onClick={() => setMenu("review")}>후기작성</li>
-            <li onClick={() => setMenu("setting")}>계정설정</li>
-          </ul>
-        </div>
-      </aside>
+      {props.customer.isLoggedIn ? (
+        <>
+          <aside className="user-dashboard-side">
+            <div className="user-profile">
+              <div
+                className="user-profile__pic"
+                style={{
+                  backgroundImage: `url("/img/porto.jpg")`
+                }}
+              ></div>
+              <div className="user-profile__name">Minha Koo</div>
+            </div>
+            <div className="user-point">
+              <span>{point}</span> 포인트
+            </div>
+            <div className="user-menu">
+              <ul>
+                <li onClick={() => setMenu("default")}>대시보드</li>
+                <li onClick={() => setMenu("orders")}>예약내역</li>
+                <li onClick={() => setMenu("likes")}>찜 목록</li>
+                <li onClick={() => setMenu("review")}>후기작성</li>
+                <li onClick={() => setMenu("setting")}>계정설정</li>
+              </ul>
+            </div>
+          </aside>
 
-      <section className="user-dashboard-main">{renderMain(menu)}</section>
+          <section className="user-dashboard-main">{renderMain(menu)}</section>
+        </>
+      ) : null}
     </div>
   );
 };
 
-export default DashBoard;
+const mapStateToProps = state => {
+  return state;
+};
+
+export default connect(mapStateToProps, null)(DashBoard);
