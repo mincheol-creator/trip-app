@@ -7,6 +7,7 @@ const headers = { withCredentials: true };
 // const url = "70.12.226.41:8181";
 const url = "70.12.227.32:8181"; // 멀캠 지환
 // const url = "172.30.1.9:8181"; // 시우형네
+//const url = "192.168.201.186:8181"; // 지환이네
 
 const API_KEY = process.env.REACT_APP_KAKAO_KEY;
 
@@ -105,6 +106,10 @@ const addReview = (pId, star, content) => {
     star,
     content,
   });
+};
+
+const getOrderedList = () => {
+  return axios.get(``, {});
 };
 
 // 찜 목록에 추가
