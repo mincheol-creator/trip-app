@@ -66,7 +66,7 @@ function App() {
           <Footer />
         </Route>
 
-        <Route path="/pay/:orderNum">
+        <Route path="/pay">
           <Header />
           <PaymentPage />
           <Footer />
