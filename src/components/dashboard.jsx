@@ -4,14 +4,25 @@ import "../scss/styles.scss";
 import LikedProducts from "./likedProducts";
 import ReviewForm from "./review-form";
 import OrderedList from "./ordered-list";
+import API from "../API";
 
 const DashBoard = props => {
   const [menu, setMenu] = React.useState("default");
   const [point, setPoint] = React.useState(0);
+  const [reviewData, setReviewData] = React.useState([]);
+  const [data, setData] = React.useState([]);
 
   React.useEffect(() => {
-    // 리뷰 작성해야할 개수 불러오기 (isComplete === false인 데이터 개수)
-    // API.getReviewNum(customer_id)
+    // 유저 구매내역 (리뷰 작성 안된 것) 불러오기
+    if (reviewData.length < 1) {
+      API.getOrderList().then(response => {
+        const data = response.data;
+        setReviewData(
+          data.filter(data => data.orders[0].is_review_written === false)
+        );
+        setData(data);
+      });
+    }
 
     // 유저의 포인트 불러오기
     setPoint(10);
@@ -20,9 +31,9 @@ const DashBoard = props => {
   const renderMain = menu => {
     switch (menu) {
       case "orders":
-        return <OrderedList />;
+        return <OrderedList data={data} />;
       case "review":
-        return <ReviewForm />;
+        return <ReviewForm data={reviewData} />;
       case "likes":
         return <LikedProducts />;
       case "setting":
@@ -34,7 +45,7 @@ const DashBoard = props => {
               <header>여행 후기</header>
               <div className="review-ask__btn">
                 <button onClick={() => setMenu("review")}>
-                  <span>2</span> 개의 여행 후기 작성 가능
+                  <span>{reviewData.length}</span> 개의 여행 후기 작성 가능
                 </button>
               </div>
             </div>
@@ -73,7 +84,7 @@ const DashBoard = props => {
             <li onClick={() => setMenu("default")}>대시보드</li>
             <li onClick={() => setMenu("orders")}>예약내역</li>
             <li onClick={() => setMenu("likes")}>찜 목록</li>
-            <li onClick={() => setMenu("review")}>리뷰작성</li>
+            <li onClick={() => setMenu("review")}>후기작성</li>
             <li onClick={() => setMenu("setting")}>계정설정</li>
           </ul>
         </div>

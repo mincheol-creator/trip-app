@@ -32,7 +32,7 @@ class ProductPage extends React.Component {
       adultCount: 0, // 예약할 때 선택해야하는 성인 수
       youthCount: 0, // 예약할 때 선택해야하는 어린이 수
       likedCount: 30, // 찜 목록에 몇개나 있는지
-      totalPrice: 0,
+      totalPrice: 0
     };
   }
 
@@ -40,10 +40,10 @@ class ProductPage extends React.Component {
     // 찜목록 DB돌고 이 상품이 찜목록에 몇개나 들어가있는지 카운트
     let sendProductID = this.state.productID;
     console.log(sendProductID);
-    await API.selectProduct(sendProductID).then((response) => {
+    await API.selectProduct(sendProductID).then(response => {
       console.log(response.data.Message);
       this.setState({
-        productData: response.data.Message,
+        productData: response.data.Message
       });
     });
   }
@@ -56,16 +56,22 @@ class ProductPage extends React.Component {
     return quantity * 1 * (price * 1);
   }
 
-  handleDateChange = (e) => {
+  handleDateChange = e => {
     console.log(e.target.value);
     this.setState({
-      pickedDate: e.target.value,
+      pickedDate: e.target.value
     });
   };
 
-  handleLikeBtn = (event) => {
+  handleLikeBtn = event => {
     event.preventDefault();
-    API.addLikes(this.state.productData.id);
+    API.addLikes(this.state.productData.id).then(response => {
+      if (response.data.message) {
+        alert("찜 목록에 추가되었습니다.");
+      } else {
+        alert("찜하기 실패 ㅠㅠ");
+      }
+    });
   };
 
   handleQuantityChange = () => {
@@ -111,15 +117,15 @@ class ProductPage extends React.Component {
                   max="2040-12-31"
                   onChange={this.handleDateChange}
                 />
-                <label htmlFor="">성인</label>
+                <label htmlFor="">성 인</label>
                 <input
                   type="number"
                   name=""
                   id="adult-quantity-input"
                   min="0"
                   value={this.state.adultCount}
-                  ref={(ref) => (this._adultInput = ref)}
-                  onChange={(e) =>
+                  ref={ref => (this._adultInput = ref)}
+                  onChange={e =>
                     this.setState({ adultCount: e.target.value }, () =>
                       this.handleQuantityChange()
                     )
@@ -143,7 +149,7 @@ class ProductPage extends React.Component {
                   id="youth-quantity-input"
                   value={this.state.youthCount}
                   min="0"
-                  onChange={(e) =>
+                  onChange={e =>
                     this.setState({ youthCount: e.target.value }, () =>
                       this.handleQuantityChange()
                     )
@@ -183,7 +189,7 @@ class ProductPage extends React.Component {
                 {this.currencyFormat(productData.adult_price)}원
               </div>
               <div className="product-side__info">
-                <p>예약 가능한 가장 빠른 날짜: 2020년 4월 9일</p>
+                {/* <p>예약 가능한 가장 빠른 날짜: 2020년 4월 10일</p> */}
                 <p>24시간 이내 확정</p>
               </div>
               <div className="product-side__totalPrice">
@@ -219,7 +225,7 @@ class ProductPage extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return state;
 };
 
