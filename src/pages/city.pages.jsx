@@ -14,17 +14,17 @@ class CityPage extends React.Component {
       cityName: window.location.pathname.split("/")[2],
       cityData: null,
       tourData: null,
-      ticketData: null
+      ticketData: null,
     };
   }
 
   async componentDidMount() {
     let sendCityName = this.state.cityName;
-    await API.getCityDetailPreview(sendCityName).then(response => {
+    await API.getCityDetailPreview(sendCityName).then((response) => {
       this.setState({
         cityData: response.data.cityMessage,
         tourData: response.data.tourMessage,
-        ticketData: response.data.ticketMessage
+        ticketData: response.data.ticketMessage,
       });
     });
 
@@ -44,7 +44,7 @@ class CityPage extends React.Component {
             <div
               className="city-header"
               style={{
-                backgroundImage: `url("http://${process.env.REACT_APP_SERVER_URL}/image/${cityData.image}")`
+                backgroundImage: `url("http://70.12.227.32:8181/image/${cityData.image}")`,
               }}
             >
               <div className="city-header__name">
@@ -77,7 +77,7 @@ class CityPage extends React.Component {
                 🚩 {cityData.name_kor} 가이드 투어
               </div>
               <div className="city__list">
-                {tourData.map(tourData => (
+                {tourData.map((tourData) => (
                   <ProductCard key={tourData.id} data={tourData} />
                 ))}
               </div>
@@ -86,7 +86,7 @@ class CityPage extends React.Component {
             <div className="city-ticket">
               <div className="city__title">🎫 {cityData.name_kor} 티켓</div>
               <div className="city__list">
-                {ticketData.map(ticketData => (
+                {ticketData.map((ticketData) => (
                   <ProductCard key={ticketData.id} data={ticketData} />
                 ))}
               </div>
@@ -98,7 +98,7 @@ class CityPage extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return state;
 };
 

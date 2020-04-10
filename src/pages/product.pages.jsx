@@ -32,16 +32,16 @@ class ProductPage extends React.Component {
       adultCount: 0, // 예약할 때 선택해야하는 성인 수
       youthCount: 0, // 예약할 때 선택해야하는 어린이 수
       likedCount: 30, // 찜 목록에 몇개나 있는지
-      totalPrice: 0
+      totalPrice: 0,
     };
   }
 
   async componentDidMount() {
     // 찜목록 DB돌고 이 상품이 찜목록에 몇개나 들어가있는지 카운트
     let sendProductID = this.state.productID;
-    await API.selectProduct(sendProductID).then(response => {
+    await API.selectProduct(sendProductID).then((response) => {
       this.setState({
-        productData: response.data.Message
+        productData: response.data.Message,
       });
     });
   }
@@ -54,15 +54,15 @@ class ProductPage extends React.Component {
     return quantity * 1 * (price * 1);
   }
 
-  handleDateChange = e => {
+  handleDateChange = (e) => {
     this.setState({
-      pickedDate: e.target.value
+      pickedDate: e.target.value,
     });
   };
 
-  handleLikeBtn = event => {
+  handleLikeBtn = (event) => {
     event.preventDefault();
-    API.addLikes(this.state.productData.id).then(response => {
+    API.addLikes(this.state.productData.id).then((response) => {
       if (response.data.message) {
         alert("찜 목록에 추가되었습니다.");
       } else {
@@ -98,7 +98,7 @@ class ProductPage extends React.Component {
 
               <div className="product-main__picture">
                 <img
-                  src={`http://${process.env.REACT_APP_SERVER_URL}/image/${productData.photo}`}
+                  src={`http://70.12.227.32:8181/image/${productData.photo}`}
                   alt={productData.name}
                 />
               </div>
@@ -121,8 +121,8 @@ class ProductPage extends React.Component {
                   id="adult-quantity-input"
                   min="0"
                   value={this.state.adultCount}
-                  ref={ref => (this._adultInput = ref)}
-                  onChange={e =>
+                  ref={(ref) => (this._adultInput = ref)}
+                  onChange={(e) =>
                     this.setState({ adultCount: e.target.value }, () =>
                       this.handleQuantityChange()
                     )
@@ -146,7 +146,7 @@ class ProductPage extends React.Component {
                   id="youth-quantity-input"
                   value={this.state.youthCount}
                   min="0"
-                  onChange={e =>
+                  onChange={(e) =>
                     this.setState({ youthCount: e.target.value }, () =>
                       this.handleQuantityChange()
                     )
@@ -222,7 +222,7 @@ class ProductPage extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return state;
 };
 
